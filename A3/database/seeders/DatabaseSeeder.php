@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Factories\InstructorFactory;
+use Database\Factories\UserFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        
+        $this->call(CareerSeeder::class);
+        $this->call(EnvironmentTypeSeeder::class);
+        $this->call(LocationSeeder::class);
+
+        // Llamada al InstructorFactory para crear 5 instructores con perfiles variados
+        InstructorFactory::new()->count(5)->create();
+
+        // Llamada al UserFactory para crear 5 usuarios
+        UserFactory::new()->count(5)->create();
     }
 }

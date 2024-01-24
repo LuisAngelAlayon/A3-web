@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('career', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('Nombres de Programas');
-            $table->string('type')->comment('TECNICO', 'TECNOLOGO');
+            $table->string('type')->nullable()->comment('TECNICO', 'TECNOLOGO');
             $table->timestamps();
         });
     }
