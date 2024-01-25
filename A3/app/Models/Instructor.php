@@ -9,4 +9,16 @@ class Instructor extends Model
 {
     use HasFactory;
     protected $table = 'instructor';
+
+    protected $fillable = [
+        'document',
+        'fullname',
+        'sena_email',
+        'personal_email',
+        'phone',
+        'password',
+        'remember_token',
+        'type',
+        'profile',
+    ];
 }

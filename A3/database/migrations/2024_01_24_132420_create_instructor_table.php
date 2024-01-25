@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,15 +12,15 @@ return new class extends Migration
     {
         Schema::create('instructor', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('document')->unique(); 
+            $table->bigInteger('document')->unique();
             $table->string('fullname', 50)->comment('Nombre completo');
             $table->string('sena_email', 40)->unique();
             $table->string('personal_email', 50)->unique();
-            $table->integer('phone')->comment('numero de telefono');
-            $table->string('password', 30)->unique()->comment('contraseña');
+            $table->string('phone', 30)->comment('numero de telefono');
+            $table->string('password')->comment('contraseña');
             $table->rememberToken()->comment('recuperación de contraseña');
-            $table->string('type')->comment('tipo');
-            $table->string('profile')->comment('perfil: CONTRATISTA DE PLANTA');
+            $table->string('type')->default('instructor')->comment('tipo');
+            $table->string('profile')->default('CONTRATISTA O DE PLANTA')->comment('perfil: CONTRATISTA O DE PLANTA');
             $table->timestamps();
         });
     }

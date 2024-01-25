@@ -20,14 +20,14 @@ class InstructorFactory extends Factory
     public function definition(): array
     {
         return [
-            'document' => fake() ->unique()->unique()->numberBetween(1000000000, 9999999999),
-            'fullname' => fake(),
-            'sena_email' => fake() ->unique()->safeEmail(),
-            'personal_email'=>fake() ->unique()->safeEmail(),
-            'phone' => fake() ->phoneNumber(),
+            'document' => fake()->unique()->unique()->numberBetween(1000000000, 99),
+            'fullname' => fake()->name(),
+            'sena_email' => fake()->unique()->safeEmail(),
+            'personal_email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->phoneNumber(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            
+
         ];
     }
 }
