@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class learning_environment extends Model
+class Learning_environment extends Model
 {
     use HasFactory;
 
@@ -23,4 +23,9 @@ class learning_environment extends Model
         'status',
 
     ];
+
+    public function learning_environments()
+    {
+        return $this->belongsTo(Learning_environment::class);
+    }
 }

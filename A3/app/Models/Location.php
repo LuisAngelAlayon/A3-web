@@ -15,4 +15,9 @@ class Location extends Model
         'address',
         'status',
     ];
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

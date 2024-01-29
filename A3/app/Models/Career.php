@@ -14,4 +14,9 @@ class Career extends Model
         'name',
         'type',
     ];
+
+    public function careers()
+    {
+        return $this->hasMany(Career::class);
+    }
 }

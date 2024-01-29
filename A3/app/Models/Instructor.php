@@ -21,4 +21,5 @@ class Instructor extends Model
         'type',
         'profile',
     ];
+
 }

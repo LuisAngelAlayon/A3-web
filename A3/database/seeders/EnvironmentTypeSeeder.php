@@ -13,14 +13,14 @@ class EnvironmentTypeSeeder extends Seeder
      */
     public function run(): void
     {
-       EnvironmentType::insert([
-         
+        EnvironmentType::insert([
+
             ['description' => 'AULA '],
             ['description' => 'TALLER'],
-            ['description' => 'LABORATORIO'], 
-            ['description' => 'AULA VIRTUAL'], 
-            ['description' => 'AUDITORIO'], 
-            ['description' => 'BIBLIOTECA'], 
+            ['description' => 'LABORATORIO'],
+            ['description' => 'AULA VIRTUAL'],
+            ['description' => 'AUDITORIO'],
+            ['description' => 'BIBLIOTECA'],
             ['description' => 'CAMPO DEPORTIVO'],
 
         ]);

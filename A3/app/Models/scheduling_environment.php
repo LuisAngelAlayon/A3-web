@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class scheduling_environment extends Model
+class Scheduling_environment extends Model
 {
     use HasFactory;
 
@@ -21,5 +21,10 @@ class scheduling_environment extends Model
         'environment_id',
 
     ];
+
+    public function scheduling_environments()
+    {
+        return $this->belongsTo(Scheduling_environment::class);
+    }
 
 }

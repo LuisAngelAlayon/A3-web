@@ -19,4 +19,9 @@ class Course extends Model
         'Final_date',
         'status',
     ];
+
+    public function courses()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }

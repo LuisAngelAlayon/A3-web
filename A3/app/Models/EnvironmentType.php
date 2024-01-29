@@ -12,6 +12,12 @@ class EnvironmentType extends Model
 
     protected $fillable = [
         'description',
+
     ];
+
+    public function environments()
+    {
+        return $this->hasMany(EnvironmentType::class);
+    }
 
 }
