@@ -15,13 +15,15 @@ class TestScheduling_environmentSeeder extends Seeder
     public function run(): void
     {
 
+        Instructor::find(6);
+        $instructor = Instructor::where('document', '=', '29301321')->first();
 
         $scheduling_environment = new Scheduling_environment();
         $scheduling_environment->course_id = 2;
-        $scheduling_environment->document_instructor = 3;
-        $scheduling_environment->date_scheduling = "2003-01-09";
-        $scheduling_environment->initial_hour = "2024-01-12 11:43:23";
-        $scheduling_environment->final_hour = "2024-04-12 11:44:24";
+        $scheduling_environment->instructor_document = $instructor->document;
+        $scheduling_environment->date_scheduling = "2023-01-09";
+        $scheduling_environment->initial_hour = "00:11:23";
+        $scheduling_environment->final_hour = "00:12:23";
         $scheduling_environment->environment_id = 1;
         $scheduling_environment->save();
 

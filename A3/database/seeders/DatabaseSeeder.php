@@ -31,6 +31,6 @@ class DatabaseSeeder extends Seeder
         /*$this->call(TestInstructorSeeder::class);*/
         /*$this->call(TestLearning_environmentSeeder::class);*/
         /*$this->call(TestLocationSeeder::class);*/
-        $this->call(TestScheduling_environmentSeeder::class);
+        /*$this->call(TestScheduling_environmentSeeder::class);*/
     }
 }

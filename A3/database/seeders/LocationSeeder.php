@@ -15,10 +15,10 @@ class LocationSeeder extends Seeder
     {
         Location::insert([
 
-        ['name' => 'Sagrado corazon','address'=>'Cra 25 # 24-47','status'=>'Activo'],
-        ['name' => 'Colegio Salesiano','address'=>'Cl. 34 #Cra 26','status'=>'Activo'],
-        ['name' => 'CLEM','address'=>'Km 2 vía Tuluá - Buga','status'=>'Inactivo'], 
-        
+            ['name' => 'Sagrado corazon', 'address' => 'Cra 25 # 24-47', 'status' => 'Activo'],
+            ['name' => 'Colegio Salesiano', 'address' => 'Cl. 34 #Cra 26', 'status' => 'Activo'],
+            ['name' => 'CLEM', 'address' => 'Km 2 vía Tuluá - Buga', 'status' => 'Inactivo'],
+
         ]);
     }
 }

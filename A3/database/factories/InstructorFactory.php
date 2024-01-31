@@ -20,7 +20,7 @@ class InstructorFactory extends Factory
     public function definition(): array
     {
         return [
-            'document' => fake()->unique()->unique()->numberBetween(1000000000, 99),
+            'document' => fake()->unique()->numberBetween(1000000000, 99),
             'fullname' => fake()->name(),
             'sena_email' => fake()->unique()->safeEmail(),
             'personal_email' => fake()->unique()->safeEmail(),
