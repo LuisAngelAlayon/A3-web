@@ -32,7 +32,7 @@
                         
                         
                         <td>
-                            <a href="{{ route('activity.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
+                            <a href="{{ route('career.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <a href="#" title="confirmar" class="btn btn-confirm btn-circle btn-sm" 

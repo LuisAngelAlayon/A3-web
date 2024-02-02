@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Route::get('/index', function () {
+    return view('index');
+})->name('index');
+
 Route::get('/career/create', function () {
     return view('career.create');
 })->name('career.create');
@@ -109,14 +115,14 @@ Route::get('/location/edit', function () {
 
 
 
-Route::get('/sheduling_environment/create', function () {
-    return view('sheduling_environment.create');
-})->name('sheduling_environment.create');
+Route::get('/scheduling_environment/create', function () {
+    return view('scheduling_environment.create');
+})->name('scheduling_environment.create');
 
-Route::get('/sheduling_environment/index', function () {
-    return view('sheduling_environment.index');
-})->name('sheduling_environment.index');
+Route::get('/scheduling_environment/index', function () {
+    return view('scheduling_environment.index');
+})->name('scheduling_environment.index');
 
-Route::get('/sheduling_environment/edit', function () {
-    return view('sheduling_environment.edit');
-})->name('sheduling_environment.edit');
+Route::get('/scheduling_environment/edit', function () {
+    return view('scheduling_environment.edit');
+})->name('scheduling_environment.edit');

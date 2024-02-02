@@ -51,7 +51,7 @@
                 <div class="col-lg-12 mb-4">
                     <div class="alert alert-warning" role="alert">
                         <i class="fa-solid fa-lightbulb"></i>
-                        Para añadir actividades la Actividad primero debe crearlas y luego dar click en la accion editar
+                        Para añadir Planificaciónes ambientes la Planificación ambiente primero debe crearlas y luego dar click en la accion editar
                     </div>
                 </div>
             </div>
