@@ -24,8 +24,16 @@ class Learning_environment extends Model
 
     ];
 
-    public function learning_environments()
+    public function environment_type()
     {
-        return $this->belongsTo(Learning_environment::class);
+        return $this->belongsTo(EnvironmentType::class,'type_id');
+    }
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
+    public function scheduling_environments()
+    {
+        return $this->hasMany(SchedulingEnvironment::class);
     }
 }

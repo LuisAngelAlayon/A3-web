@@ -1,12 +1,12 @@
 @extends('templates.base')
-@section('title', 'Listado de actividad')
-@section('headers', 'Listado actividad')
+@section('title', 'Listado de ambientes de aprendizaje)
+@section('headers', 'Listado de ambientes de aprendizaje')
 
 @section('content')
     @include('templates.messages')
     <div class="row">
         <div class="col-lg-12 mb-4 d-grip gap-2 d-md-block">
-            <a href="{{ route('learning_environment.create') }}" class="btn btn-primary">Crear actividad</a>
+            <a href="{{ route('learning_environment.create') }}" class="btn btn-primary">Crear</a>
         </div>
     </div>
 
@@ -18,12 +18,13 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Descripcion</th>
-                        <th>Horas</th>
-                        <th>Tecnico</th>
+                        <th>Nombre</th>
+                        <th>Capacidad</th>
+                        <th>Area en mt2</th>
+                        <th>Piso</th>
+                        <th>Inventario</th>
                         <th>Tipo</th>
-                        <th>Acciones</th>
-                        <th></th>
+                        <th>Locación</th>
                     </tr>
                        
                 </thead>
@@ -35,15 +36,13 @@
                         <td>Software</td>
                         <td>Sistemas</td>
                         <td>
-                            <a href="{{ route('learning_environment.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
-                                <i class="fas fa-edit"></i>
+                            <a href="#" title="editar" 
+                                class="btn btn-info btn-circle btn-sm">
+                                <i class="far fa-edit"></i>
                             </a>
-                            <a href="#" title="confirmar" class="btn btn-confirm btn-circle btn-sm" 
-                            style="background-color: green; color: white">
-                                <i class="fas fa-check"></i>
-                            </a>
-                            <a href="#" title="Eliminar" 
-                                class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
+                            <a href="#" title="eliminar" 
+                                class="btn btn-danger btn-circle btn-sm"
+                                onclick="return remove()">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
