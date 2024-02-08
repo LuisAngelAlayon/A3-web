@@ -66,7 +66,7 @@
                         </button>                        
                     </div>
                     <div class="col-lg-6 mb-4">
-                        <a href="{{ route('learning_enviroment.index') }}" class="btn btn-secondary btn-block">
+                        <a href="{{ route('learning_environment.index') }}" class="btn btn-secondary btn-block">
                             Cancelar
                         </a> 
                     </div>
