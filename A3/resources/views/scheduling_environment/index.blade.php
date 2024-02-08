@@ -31,7 +31,7 @@
                         <td>descripción</td>
                         <td>15</td>
                         <td>Software</td>
-                        <td>Sistemas</td>
+                        <td>Activo</td>
                         <td>
                             <a href="{{ route('scheduling_environment.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>
