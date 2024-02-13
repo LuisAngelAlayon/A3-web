@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Listado de actividad')
-@section('headers', 'Listado actividad')
+@section('title', 'Listado de carreras')
+@section('headers', 'Listado de carreras')
 
 @section('content')
     @include('templates.messages')
@@ -20,7 +20,6 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Tipo</th>
-                        <th></th>
                     </tr>
                        
                 </thead>
@@ -35,10 +34,7 @@
                             <a href="{{ route('career.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="#" title="confirmar" class="btn btn-confirm btn-circle btn-sm" 
-                            style="background-color: green; color: white">
-                                <i class="fas fa-check"></i>
-                            </a>
+                            
                             <a href="#" title="Eliminar" 
                                 class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                                 <i class="fas fa-trash"></i>

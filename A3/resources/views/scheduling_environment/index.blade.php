@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Listado de actividad')
-@section('headers', 'Listado actividad')
+@section('title', 'Listado de programción de ambientes')
+@section('headers', 'Listado de programción de ambientes')
 
 @section('content')
     @include('templates.messages')

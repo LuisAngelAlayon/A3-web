@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Listado de actividad')
-@section('headers', 'Listado actividad')
+@section('title', 'Listado de tipos de ambientes')
+@section('headers', 'Listado de tipos de ambientes')
 
 @section('content')
     @include('templates.messages')
@@ -19,6 +19,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Descripción</th>
+                        <th>Acciones</th>
                        
                     </tr>
                        
@@ -29,15 +30,13 @@
                         <td>Aula</td>
                         
                         <td>
-                            <a href="{{ route('environment_type.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
-                                <i class="fas fa-edit"></i>
+                            <a href="#" title="editar" 
+                                class="btn btn-info btn-circle btn-sm">
+                                <i class="far fa-edit"></i>
                             </a>
-                            <a href="#" title="confirmar" class="btn btn-confirm btn-circle btn-sm" 
-                            style="background-color: green; color: white">
-                                <i class="fas fa-check"></i>
-                            </a>
-                            <a href="#" title="Eliminar" 
-                                class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
+                            <a href="#" title="eliminar" 
+                                class="btn btn-danger btn-circle btn-sm"
+                                onclick="return remove()">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>

@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Listado de actividad')
-@section('headers', 'Listado actividad')
+@section('title', 'Listado de instructores')
+@section('headers', 'Listado instructores')
 
 @section('content')
     @include('templates.messages')
@@ -24,6 +24,7 @@
                         <th>Correo personal</th>
                         <th>Telefono</th>
                         <th>Contraseña</th>
+                        <th>Tipo</th>
                         <th>Perfil</th>
                     </tr>
                        
@@ -37,8 +38,8 @@
                         <td>JuanPerez@example.com</td>
                         <td>34691247654</td>
                         <td>JuanPerez123</td>
-                        <td>instructor</td>
-                        <td>CONTRATISTA O DE PLANTA</td>
+                        <td>CONTRATISTA</td>
+                        <td>Programador de Software</td>
                         <td>
                             <a href="{{ route('instructor.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>

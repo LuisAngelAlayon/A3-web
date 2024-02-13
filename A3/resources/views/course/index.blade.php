@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Listado de actividad')
-@section('headers', 'Listado actividad')
+@section('title', 'Listado de curso')
+@section('headers', 'Listado de curso')
 
 @section('content')
     @include('templates.messages')
@@ -21,8 +21,8 @@
                         <th>Código</th>
                         <th>Jornada</th>
                         <th>Carrera</th>
-                        <th>Hora inicial</th>
-                        <th>Hora final</th>
+                        <th>Fecha inicial</th>
+                        <th>Fecha final</th>
                         <th>Estado</th>
                         <th></th>
                     </tr>
