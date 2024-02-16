@@ -15,15 +15,17 @@
                     <div class="col-lg-6 mb-4">
                         <label for="name">Nombre</label>
                         <input type="text" class="form-control"
-                        id="name" name="name" required>    
+                        id="name" name="name" required
+                        value="{{ $career['name'] }}">    
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="type">Tipo</label>
-                        <select name="shift" id="shift"
-                        class="form-control" required>
+                        <select name="type" id="type"
+                        class="form-control" required
+                        value="{{ $career['type'] }}">
                         <option value="Seleccionar">Seleccionar</option>
-                        <option value="Lectiva">Técnico</option>
-                        <option value="Productiva">Tecnólogo</option>
+                        <option value="TÉCNICO">TÉCNICO</option>
+                        <option value="TECNOLOGO">TECNOLOGO</option>
                         </select>   
                     </div>
                 </div>

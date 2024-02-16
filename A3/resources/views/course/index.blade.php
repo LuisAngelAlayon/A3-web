@@ -24,32 +24,35 @@
                         <th>Fecha inicial</th>
                         <th>Fecha final</th>
                         <th>Estado</th>
-                        <th></th>
                     </tr>
                        
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>TPS</td>
-                        <td>Diurna</td>
-                        <td>1</td>
-                        <td>2024-01-29</td>
-                        <td>2024-08-30</td>
-                        <td>Activo</td>
-                        
-                        <td>
-                        <a href="{{ route('course.edit', $course['id']) }}" title="editar" 
-                                class="btn btn-info btn-circle btn-sm">
-                                <i class="far fa-edit"></i>
-                            </a>
-                            <a href="{{ route('course.destroy', $course['id']) }}" title="eliminar" 
-                                class="btn btn-danger btn-circle btn-sm"
-                                onclick="return remove()">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    @foreach ($courses as $course)
+            
+                        <tr>
+                            
+                            <td>{{ $course['id']}}</td>
+                            <td>{{ $course['code']}}</td>
+                            <td>{{ $course['shift']}}</td>
+                            <td>{{ $course['career_id']}}</td>
+                            <td>{{ $course['initial_date']}}</td>
+                            <td>{{ $course['final_date']}}</td>
+                            <td>{{ $course['status']}}</td>
+                            
+                            <td>
+                                <a href="{{ route('course.edit', $course['id']) }}" title="editar" 
+                                    class="btn btn-info btn-circle btn-sm">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="{{ route('course.destroy', $course['id']) }}" title="eliminar" 
+                                    class="btn btn-danger btn-circle btn-sm"
+                                    onclick="return remove()">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>        
         </div>

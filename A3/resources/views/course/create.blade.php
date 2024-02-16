@@ -27,32 +27,42 @@
                         </select>
                     </div>
                 </div>
-                
+                <div class="row form-group">
                     <div class="col lg-4 mb-4">
                         <label for="career_id">Carrera</label>
                         <select name="career_id" id="career_id"
-                        class="form-control" required>
-                        <option value="">Seleccionar</option>
-                    </select>  
+                            class="form-control" required>
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>  
                     </div>
-                    <div class="row form-group">
+                </div>  
+                <div class="row form-group">
                     <div class="col lg-4 mb-4">
-                        <label for="initial_date">Fecha inicial</label>
-                        <input type="date" class="form-control"
-                        id="initial_date" name="initial_date" required>  
+                            <label for="initial_date">Fecha inicial</label>
+                            <input type="date" class="form-control"
+                            id="initial_date" name="initial_date">  
                     </div>
-                
                     <div class="col-lg-4 mb-4">
                         <label for="final_date">Fecha final</label>
                         <input type="date" class="form-control"
-                        id="final_date" name="final_date" required>    
+                        id="final_date" name="final_date" >    
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="status">Estado</label>
-                        <input type="text" class="form-control"
-                        id="status" name="status" required>    
+                        <select name="status" id="status"
+                            class="form-control" required>
+                            <option value="status">Estado</option>  
+                            <option value="status">ACTIVO</option>
+                            <option value="status">INACTIVO</option>
+                        </select>
                     </div>
-                    <div class="row form-group">
+                </div>
+                <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <button class="btn btn-primary btn-block" type="submit">
                             Guardar

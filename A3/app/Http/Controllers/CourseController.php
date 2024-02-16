@@ -30,7 +30,9 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $course = Course::create($request->all());
+        $data = $request->all();
+        $data['final_date'] = now();
+        $course = Course::create($data);
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('course.index');
     }

@@ -15,12 +15,14 @@
                     <div class="col lg-4 mb-4">
                     <label for="code">Código</label>
                     <input type="number" class="form-control"
-                        id="code" name="code" required> 
+                        id="code" name="code" required
+                        value="{{ $course['code'] }}"> 
                     </div>
                     <div class="col lg-4 mb-4">
                     <label for="shift">Jornada</label>
                         <select name="shift" id="shift"
-                        class="form-control" required>
+                        class="form-control" required
+                        value="{{ $course['shift'] }}">
                         <option value="Seleccionar">Seleccionar</option>
                         <option value="Diurna">Diurna</option>
                         <option value="Mixta">Mixta</option>
@@ -32,7 +34,8 @@
                     <div class="col lg-4 mb-4">
                         <label for="career_id">Carrera</label>
                         <select name="career_id" id="career_id"
-                        class="form-control" required>
+                        class="form-control" required
+                        value="{{ $course['career_id'] }}">
                         <option value="">Seleccionar</option>
                     </select>    
                     </div>
@@ -41,17 +44,20 @@
                     <div class="col-lg-4 mb-4">
                         <label for="initial_date">Fecha inicial</label>
                         <input type="date" class="form-control"
-                        id="initial_date" name="initial_date" required>    
+                        id="initial_date" name="initial_date" required
+                        value="{{ $course['initial_date'] }}">    
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="final_date">Fecha final</label>
                         <input type="date" class="form-control"
-                        id="final_date" name="final_date" required>    
+                        id="final_date" name="final_date" required
+                        value="{{ $course['final_date'] }}">    
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="status">Estado</label>
                         <input type="text" class="form-control"
-                        id="status" name="status" required>    
+                        id="status" name="status" required
+                        value="{{ $course['status'] }}">    
                     </div>
                 </div>
                

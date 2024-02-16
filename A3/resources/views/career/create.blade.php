@@ -19,11 +19,11 @@
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="type">Tipo</label>
-                        <select name="shift" id="shift"
+                        <select name="type" id="type"
                         class="form-control" required>
                         <option value="Seleccionar">Seleccionar</option>
-                        <option value="Lectiva">Técnico</option>
-                        <option value="Productiva">Tecnólogo</option>
+                        <option value="Técnico">Técnico</option>
+                        <option value="Tecnologo">Tecnólogo</option>
                         </select>   
                     </div>
                 </div>
