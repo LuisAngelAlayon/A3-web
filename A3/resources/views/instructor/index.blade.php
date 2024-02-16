@@ -41,14 +41,10 @@
                         <td>CONTRATISTA</td>
                         <td>Programador de Software</td>
                         <td>
-                            <a href="{{ route('instructor.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
+                            <a href="{{ route('instructor.edit', $instructor['id']) }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="#" title="confirmar" class="btn btn-confirm btn-circle btn-sm" 
-                            style="background-color: green; color: white">
-                                <i class="fas fa-check"></i>
-                            </a>
-                            <a href="#" title="Eliminar" 
+                            <a href="{{ route('instructor.destroy', $instructor['id']) }}" title="Eliminar" 
                                 class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                                 <i class="fas fa-trash"></i>
                             </a>

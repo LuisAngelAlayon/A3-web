@@ -33,14 +33,10 @@
                         <td>Software</td>
                         <td>Activo</td>
                         <td>
-                            <a href="{{ route('scheduling_environment.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
+                            <a href="{{ route('scheduling_environment.edit', $scheduling_environment['id']) }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="#" title="confirmar" class="btn btn-confirm btn-circle btn-sm" 
-                            style="background-color: green; color: white">
-                                <i class="fas fa-check"></i>
-                            </a>
-                            <a href="#" title="Eliminar" 
+                            <a href="{{ route('scheduling_environment.destroy', $scheduling_environment['id']) }}" title="Eliminar" 
                                 class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                                 <i class="fas fa-trash"></i>
                             </a>

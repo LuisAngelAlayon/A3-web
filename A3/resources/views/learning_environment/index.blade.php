@@ -1,5 +1,5 @@
 @extends('templates.base')
-@section('title', 'Listado de ambientes de aprendizaje)
+@section('title', 'Listado de ambientes de aprendizaje')
 @section('headers', 'Listado de ambientes de aprendizaje')
 
 @section('content')
@@ -36,11 +36,11 @@
                         <td>Software</td>
                         <td>Sistemas</td>
                         <td>
-                            <a href="#" title="editar" 
+                            <a href="{{ route('learning_environment.edit', $learning_environment['id']) }}" title="editar" 
                                 class="btn btn-info btn-circle btn-sm">
                                 <i class="far fa-edit"></i>
                             </a>
-                            <a href="#" title="eliminar" 
+                            <a href="{{ route('learning_environment.destroy', $learning_environment['id']) }}" title="eliminar" 
                                 class="btn btn-danger btn-circle btn-sm"
                                 onclick="return remove()">
                                 <i class="fas fa-trash"></i>

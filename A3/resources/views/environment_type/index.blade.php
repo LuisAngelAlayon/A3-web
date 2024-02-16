@@ -30,11 +30,11 @@
                         <td>Aula</td>
                         
                         <td>
-                            <a href="#" title="editar" 
+                            <a href="{{ route('environment_type.edit', $environment_type['id']) }}" title="editar" 
                                 class="btn btn-info btn-circle btn-sm">
                                 <i class="far fa-edit"></i>
                             </a>
-                            <a href="#" title="eliminar" 
+                            <a href="{{ route('environment_type.destroy', $environment_type['id']) }}" title="eliminar" 
                                 class="btn btn-danger btn-circle btn-sm"
                                 onclick="return remove()">
                                 <i class="fas fa-trash"></i>

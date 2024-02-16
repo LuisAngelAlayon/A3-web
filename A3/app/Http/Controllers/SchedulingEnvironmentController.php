@@ -12,8 +12,8 @@ class schedulingEnvironmentController extends Controller
      */
     public function index()
     {
-        $scheduling_environments = Scheduling_environment::all();  
-      
+        $scheduling_environments = Scheduling_environment::all();
+
         return view('scheduling_environment.index', compact('scheduling_environments'));
     }
 
@@ -49,10 +49,9 @@ class schedulingEnvironmentController extends Controller
     public function edit(string $id)
     {
         $scheduling_environment = Scheduling_environment::find($id);
-        if($scheduling_environment){
-            return view('scheduling_environment.edit', compact('causal'));//si la causal existe
-        }
-        else{
+        if ($scheduling_environment) {
+            return view('scheduling_environment.edit', compact('scheduling_environment'));//si la causal existe
+        } else {
             return redirect()->route('scheduling_environment.index');
         }
     }
@@ -63,30 +62,26 @@ class schedulingEnvironmentController extends Controller
     public function update(Request $request, string $id)
     {
         $scheduling_environment = Scheduling_environment::find($id);
-        if($scheduling_environment)//si la causal existe
+        if ($scheduling_environment)//si la causal existe
         {
             $scheduling_environment->update($request->all());//delete from causal where id = x
             session()->flash('message', 'Registro actualizado exitosamente');
-        }
-        else{
+        } else {
             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
-        return redirect()->route('scheduling_environment.index'); 
+        return redirect()->route('scheduling_environment.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        {
+    { {
             $scheduling_environment = Scheduling_environment::find($id);
-            if($scheduling_environment)
-            {
+            if ($scheduling_environment) {
                 $scheduling_environment->delete();//delete from causal where id = x
                 session()->flash('message', 'Registro eliminado exitosamente');
-            }
-            else{
+            } else {
                 session()->flash('warning', 'No se encuentra el registro solicitado');
             }
             return redirect()->route('scheduling_environment.index');

@@ -34,11 +34,11 @@
                         <td>ACTIVO</td>
                         
                         <td>                      
-                            <a href="#" title="editar" 
+                            <a href="{{ route('location.edit', $location['id']) }}" title="editar" 
                                 class="btn btn-info btn-circle btn-sm">
                                 <i class="far fa-edit"></i>
                             </a>
-                            <a href="#" title="eliminar" 
+                            <a href="{{ route('location.destroy', $location['id']) }}" title="eliminar" 
                                 class="btn btn-danger btn-circle btn-sm"
                                 onclick="return remove()">
                                 <i class="fas fa-trash"></i>

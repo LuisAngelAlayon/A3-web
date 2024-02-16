@@ -12,8 +12,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();  
-      
+        $courses = Course::all();
+
         return view('course.index', compact('courses'));
     }
 
@@ -49,10 +49,9 @@ class CourseController extends Controller
     public function edit(string $id)
     {
         $course = Course::find($id);
-        if($course){
-            return view('course.edit', compact('causal'));//si la causal existe
-        }
-        else{
+        if ($course) {
+            return view('course.edit', compact('course'));//si la causal existe
+        } else {
             return redirect()->route('course.index');
         }
     }
@@ -63,33 +62,29 @@ class CourseController extends Controller
     public function update(Request $request, string $id)
     {
         $course = Course::find($id);
-        if($course)//si la causal existe
+        if ($course)//si la causal existe
         {
             $course->update($request->all());//delete from causal where id = x
             session()->flash('message', 'Registro actualizado exitosamente');
-        }
-        else{
+        } else {
             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
-        return redirect()->route('activity.index'); 
+        return redirect()->route('course.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        {
+    { {
             $course = Course::find($id);
-            if($course)
-            {
+            if ($course) {
                 $course->delete();//delete from causal where id = x
                 session()->flash('message', 'Registro eliminado exitosamente');
-            }
-            else{
+            } else {
                 session()->flash('warning', 'No se encuentra el registro solicitado');
             }
-            return redirect()->route('activity.index');
+            return redirect()->route('course.index');
         }
     }
 }

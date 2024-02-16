@@ -31,7 +31,7 @@ class EnvironmentTypeController extends Controller
     {
         $environment_type = EnvironmentType::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
-        return redirect()->route('environment.index');
+        return redirect()->route('environment_type.index');
     }
 
     /**
@@ -48,10 +48,9 @@ class EnvironmentTypeController extends Controller
     public function edit(string $id)
     {
         $environment_type = EnvironmentType::find($id);
-        if($environment_type){
+        if ($environment_type) {
             return view('environment_type.edit', compact('environment_type'));//si la causal existe
-        }
-        else{
+        } else {
             return redirect()->route('environment_type.index');
         }
     }
@@ -62,12 +61,11 @@ class EnvironmentTypeController extends Controller
     public function update(Request $request, string $id)
     {
         $environment_type = EnvironmentType::find($id);
-        if($environment_type)//si la causal existe
+        if ($environment_type)//si la causal existe
         {
             $environment_type->update($request->all());//delete from causal where id = x
             session()->flash('message', 'Registro actualizado exitosamente');
-        }
-        else{
+        } else {
             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
         return redirect()->route('environment_type.index');
@@ -79,12 +77,10 @@ class EnvironmentTypeController extends Controller
     public function destroy(string $id)
     {
         $environment_type = EnvironmentType::find($id);
-        if($environment_type)
-        {
+        if ($environment_type) {
             $environment_type->delete();//delete from causal where id = x
             session()->flash('message', 'Registro eliminado exitosamente');
-        }
-        else{
+        } else {
             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
         return redirect()->route('environment_type.index');

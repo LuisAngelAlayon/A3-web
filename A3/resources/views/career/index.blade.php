@@ -31,11 +31,11 @@
                         
                         
                         <td>
-                            <a href="{{ route('career.create') }}" title="Editar" class="btn btn-info btn-circle btn-sm">
+                            <a href="{{ route('career.edit', $career['id']) }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>
                             </a>
                             
-                            <a href="#" title="Eliminar" 
+                            <a href="{{ route('career.destroy', $career['id']) }}" title="Eliminar" 
                                 class="btn btn-danger btn-circle btn-sm" onclick="return remove()">
                                 <i class="fas fa-trash"></i>
                             </a>

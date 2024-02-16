@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col lg-12 mb-4">
-            <form action="" method="POST">
+            <form action="{{ route('instructor.store') }}" method="POST">
                 @csrf
                 
                 <div class="row form-group">

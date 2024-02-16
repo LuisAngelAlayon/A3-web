@@ -31,7 +31,7 @@ class LocationController extends Controller
     {
         $location = Location::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
-        return redirect()->route('career.index');
+        return redirect()->route('location.index');
     }
 
     /**
@@ -48,10 +48,9 @@ class LocationController extends Controller
     public function edit(string $id)
     {
         $location = Location::find($id);
-        if($location){
+        if ($location) {
             return view('location.edit', compact('location'));//si la causal existe
-        }
-        else{
+        } else {
             return redirect()->route('location.index');
         }
     }
@@ -62,12 +61,10 @@ class LocationController extends Controller
     public function update(Request $request, string $id)
     {
         $location = Location::find($id);
-        if($location)
-        {
+        if ($location) {
             $location->update($request->all());
             session()->flash('message', 'Registro actualizado exitosamente');
-        }
-        else{
+        } else {
             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
         return redirect()->route('location.index');
@@ -79,12 +76,10 @@ class LocationController extends Controller
     public function destroy(string $id)
     {
         $location = Location::find($id);
-        if($location)
-        {
+        if ($location) {
             $location->delete();//delete from causal where id = x
             session()->flash('message', 'Registro eliminado exitosamente');
-        }
-        else{
+        } else {
             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
         return redirect()->route('location.index');
