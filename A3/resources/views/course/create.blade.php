@@ -13,7 +13,7 @@
                 <div class="row form-group">
                     <div class="col lg-4 mb-4">
                     <label for="code">Código</label>
-                    <input type="number" class="form-control"
+                    <input type="text" class="form-control"
                         id="code" name="code" required> 
                     </div>
                     <div class="col lg-4 mb-4">
@@ -33,11 +33,11 @@
                         <select name="career_id" id="career_id"
                             class="form-control" required>
                             <option value="">Seleccionar</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            <option value="1">TPS</option>
+                            <option value="2">ADSO</option>
+                            <option value="3">ADMINISTRACIÓN SALUD</option>
+                            <option value="4">GESTION DOCUMENTAL</option>
+                            <option value="5">ING.SOFTWARE</option>
                         </select>  
                     </div>
                 </div>  
@@ -50,15 +50,15 @@
                     <div class="col-lg-4 mb-4">
                         <label for="final_date">Fecha final</label>
                         <input type="date" class="form-control"
-                        id="final_date" name="final_date" >    
+                        id="final_date" name="final_date">    
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="status">Estado</label>
                         <select name="status" id="status"
                             class="form-control" required>
-                            <option value="status">Estado</option>  
-                            <option value="status">ACTIVO</option>
-                            <option value="status">INACTIVO</option>
+                            <option value="Estado">Estado</option>  
+                            <option value="ACTIVO">ACTIVO</option>
+                            <option value="INACTIVO">INACTIVO</option>
                         </select>
                     </div>
                 </div>

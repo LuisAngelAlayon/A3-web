@@ -14,7 +14,7 @@
                 <div class="row form-group">
                     <div class="col lg-4 mb-4">
                     <label for="code">Código</label>
-                    <input type="number" class="form-control"
+                    <input type="text" class="form-control"
                         id="code" name="code" required
                         value="{{ $course['code'] }}"> 
                     </div>
@@ -37,7 +37,12 @@
                         class="form-control" required
                         value="{{ $course['career_id'] }}">
                         <option value="">Seleccionar</option>
-                    </select>    
+                            <option value="1">TPS</option>
+                            <option value="2">ADSO</option>
+                            <option value="3">ADMINISTRACIÓN SALUD</option>
+                            <option value="4">GESTION DOCUMENTAL</option>
+                            <option value="5">ING.SOFTWARE</option>
+                        </select>    
                     </div>
                 </div>
                 <div class="row form-group">
@@ -55,9 +60,13 @@
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="status">Estado</label>
-                        <input type="text" class="form-control"
+                        <select type="text" class="form-control"
                         id="status" name="status" required
-                        value="{{ $course['status'] }}">    
+                        value="{{ $course['status'] }}">
+                        <option value="Seleccionar">Seleccionar</option>
+                        <option value="ACTIVO">ACTIVO</option>
+                        <option value="INACTIVO">INACTIVO</option>  
+                        </select>
                     </div>
                 </div>
                

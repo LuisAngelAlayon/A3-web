@@ -30,9 +30,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['final_date'] = now();
-        $course = Course::create($data);
+        Course::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('course.index');
     }
@@ -52,7 +50,7 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         if ($course) {
-            return view('course.edit', compact('course'));//si la causal existe
+            return view('course.edit', compact('course'));
         } else {
             return redirect()->route('course.index');
         }

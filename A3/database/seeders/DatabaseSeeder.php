@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
 
 
-       /* $this->call(CareerSeeder::class);
+        /*$this->call(CareerSeeder::class);
         $this->call(EnvironmentTypeSeeder::class);
         $this->call(LocationSeeder::class);
 

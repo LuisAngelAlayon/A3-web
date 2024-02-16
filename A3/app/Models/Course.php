@@ -16,7 +16,7 @@ class Course extends Model
         'shift',
         'career_id',
         'initial_date',
-        'Final_date',
+        'final_date',
         'status',
     ];
 

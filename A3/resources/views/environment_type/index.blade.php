@@ -20,7 +20,6 @@
                         <th>Id</th>
                         <th>Descripción</th>
                         <th>Acciones</th>
-                       
                     </tr>
                        
                 </thead>
