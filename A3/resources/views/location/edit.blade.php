@@ -15,17 +15,20 @@
                     <div class="col-lg-4 mb-4">
                         <label for="name">Nombre</label>
                         <input type="text" class="form-control"
-                        id="name" name="name" required>    
+                        id="name" name="name" required
+                        value="{{ $location['name'] }}">    
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="address">Dirección</label>
                         <input type="text" class="form-control"
-                        id="address" name="address" required>    
+                        id="address" name="address" required
+                        value="{{ $location['address'] }}">    
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="status">Estado</label>
                         <select name="shift" id="shift"
-                        class="form-control" required>
+                        class="form-control" required
+                        value="{{ $location['shift'] }}">
                         <option value="ACTIVO">ACTIVO</option>
                         <option value="INACTIVO">INACTIVO</option>
                         </select>  

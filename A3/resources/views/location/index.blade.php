@@ -27,11 +27,12 @@
                        
                 </thead>
                 <tbody>
+                    @foreach ($locations as $location)
                     <tr>
-                        <td>4</td>
-                        <td>Sena Tuluá</td>
-                        <td>Cra 25 # 21-35</td>
-                        <td>ACTIVO</td>
+                        <td>{{ $instructor['id'] }}</td>
+                        <td>{{ $instructor['name'] }}</td>
+                        <td>{{ $instructor['address'] }}</td>
+                        <td>{{ $instructor['status'] }}</td>
                         
                         <td>                      
                             <a href="{{ route('location.edit', $location['id']) }}" title="editar" 

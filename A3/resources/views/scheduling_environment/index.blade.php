@@ -18,20 +18,27 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Dirección</th>
-                        <th>Estado</th>
+                        <th>Id Curso</th>
+                        <th>Documento instructor</th>
+                        <th>Fecha de ambiente</th>
+                        <th>Hora inicial</th>
+                        <th>Hora final</th>
+                        <th>Id medio ambiente</th>
+                        
                         <th></th>
                     </tr>
                        
                 </thead>
                 <tbody>
+                    @foreach ($schedulings_environments as $scheduling_environment)
                     <tr>
-                        <td>1</td>
-                        <td>descripción</td>
-                        <td>15</td>
-                        <td>Software</td>
-                        <td>Activo</td>
+                        <td>{{ $instructor['id'] }}</td>
+                        <td>{{ $instructor['course_id'] }}</td>
+                        <td>{{ $instructor['instructor_document'] }}</td>
+                        <td>{{ $instructor['date_scheduling'] }}</td>
+                        <td>{{ $instructor['initial_hour'] }}</td>
+                        <td>{{ $instructor['final_hour'] }}</td>
+                        <td>{{ $instructor['environment_id'] }}</td>
                         <td>
                             <a href="{{ route('scheduling_environment.edit', $scheduling_environment['id']) }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>

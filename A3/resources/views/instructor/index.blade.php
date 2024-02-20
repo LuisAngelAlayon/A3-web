@@ -30,16 +30,17 @@
                        
                 </thead>
                 <tbody>
+                    @foreach ($instructors as $instructor)
                     <tr>
-                        <td>6</td>
-                        <td>29301321</td>
-                        <td>Juan Perez Gonzalez</td>
-                        <td>JuanP@Soy.sena.edu.co</td>
-                        <td>JuanPerez@example.com</td>
-                        <td>34691247654</td>
-                        <td>JuanPerez123</td>
-                        <td>CONTRATISTA</td>
-                        <td>Programador de Software</td>
+                        <td>{{ $instructor['id'] }}</td>
+                        <td>{{ $instructor['document'] }}</td>
+                        <td>{{ $instructor['fullname'] }}</td>
+                        <td>{{ $instructor['sena_email'] }}</td>
+                        <td>{{ $instructor['personal_email'] }}</td>
+                        <td>{{ $instructor['phone'] }}</td>
+                        <td>{{ $instructor['type'] }}</td>
+                        <td>{{ $instructor['profile'] }}</td>
+
                         <td>
                             <a href="{{ route('instructor.edit', $instructor['id']) }}" title="Editar" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-edit"></i>

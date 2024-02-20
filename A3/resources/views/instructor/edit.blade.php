@@ -15,36 +15,42 @@
                     <div class="col-lg-6 mb-4">
                         <label for="document">Documento</label>
                         <input type="number" class="form-control"
-                        id="document" name="document" required>    
+                        id="document" name="document" required
+                        value="{{ $instructor['document'] }}">  >    
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="fullname">Nombre Completo</label>
                         <input type="text" class="form-control"
-                        id="fullname" name="fullname" required> 
+                        id="fullname" name="fullname" required
+                        value="{{ $instructor['fullname'] }}">  >  > 
                     </div>  
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <label for="sena_email">Correo Sena</label>
                         <input type="email" class="form-control"
-                        id="sena_email" name="sena_email" required>    
+                        id="sena_email" name="sena_email" required
+                        value="{{ $instructor['sena_email'] }}">  >  >    
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="personal_email">Correo personal</label>
                         <input type="email" class="form-control"
-                        id="personal_email" name="personal_email" required>
+                        id="personal_email" name="personal_email" required
+                        value="{{ $instructor['personal_email'] }}">  
                     </div>   
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <label for="phone">Teléfono</label>
                         <input type="number" class="form-control"
-                        id="phone" name="phone" required>    
+                        id="phone" name="phone" required
+                        value="{{ $instructor['phone'] }}">        
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="password">Contraseña</label>
                         <input type="text" class="form-control"
-                        id="password" name="password" required>
+                        id="password" name="password" required
+                        value="{{ $instructor['password'] }}">  
                     </div>   
                 </div>
                 <div class="row form-group">
@@ -54,13 +60,15 @@
                         class="form-control" required>
                         <option value="Seleccionar">Seleccionar</option>
                         <option value="Planta">Planta</option>
-                        <option value="Contratista">Contratista</option>
+                        <option value="Contratista">Contratista</option
+                            value="{{ $instructor['type'] }}">  
                         </select>
                     </div>  
                     <div class="col-lg-6 mb-4">
                         <label for="profile">Perfil</label>
                         <input type="text" class="form-control"
-                        id="profile" name="profile" required>   
+                        id="profile" name="profile" required
+                        value="{{ $instructor['profile'] }}">     
                     </div>
                 </div>
 

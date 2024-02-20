@@ -25,16 +25,23 @@
                         <th>Inventario</th>
                         <th>Tipo</th>
                         <th>Locación</th>
+                        <th>Estado</th>
                     </tr>
                        
                 </thead>
                 <tbody>
+                    @foreach ($learning_environments as $learning_environment)
                     <tr>
-                        <td>1</td>
-                        <td>descripción</td>
-                        <td>15</td>
-                        <td>Software</td>
-                        <td>Sistemas</td>
+                        <td>{{ $instructor['id'] }}</td>
+                        <td>{{ $instructor['name'] }}</td>
+                        <td>{{ $instructor['capacity'] }}</td>
+                        <td>{{ $instructor['area_mt2'] }}</td>
+                        <td>{{ $instructor['floor'] }}</td>
+                        <td>{{ $instructor['inventory'] }}</td>
+                        <td>{{ $instructor['type_id'] }}</td>
+                        <td>{{ $instructor['location_id'] }}</td>
+                        <td>{{ $instructor['status'] }}</td>
+
                         <td>
                             <a href="{{ route('learning_environment.edit', $learning_environment['id']) }}" title="editar" 
                                 class="btn btn-info btn-circle btn-sm">
