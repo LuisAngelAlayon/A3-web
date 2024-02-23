@@ -24,8 +24,8 @@
                         class="form-control" required
                         value="{{ $career['type'] }}">
                         <option value="Seleccionar">Seleccionar</option>
-                        <option value="TÉCNICO">TÉCNICO</option>
-                        <option value="TECNOLOGO">TECNOLOGO</option>
+                        <option value="TÉCNICO">Tecnico</option>
+                        <option value="TECNOLOGO">Tecnologo</option>
                         </select>   
                     </div>
                 </div>

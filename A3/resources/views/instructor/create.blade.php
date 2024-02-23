@@ -40,12 +40,12 @@
                         <label for="phone">Teléfono</label>
                         <input type="number" class="form-control"
                         id="phone" name="phone" required>    
-                    </div>
+                    </div> 
                     <div class="col-lg-6 mb-4">
-                        <label for="password">Contraseña</label>
+                        <label for="password">Contraseña</label>
                         <input type="text" class="form-control"
-                        id="password" name="password" required>
-                    </div>   
+                        id="password" name="password" required>    
+                    </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
@@ -53,14 +53,17 @@
                         <select name="type" id="type"
                         class="form-control" required>
                         <option value="Seleccionar">Seleccionar</option>
-                        <option value="Planta">Planta</option>
-                        <option value="Contratista">Contratista</option>
+                        <option value="Instructor">Instructor</option>
                         </select>
                     </div>  
                     <div class="col-lg-6 mb-4">
                         <label for="profile">Perfil</label>
-                        <input type="text" class="form-control"
-                        id="profile" name="profile" required>   
+                        <select type="text" class="form-control"
+                        id="profile" name="profile" required> 
+                        <option value="Seleccionar">Seleccionar</option>
+                        <option value="Constratista">Contratista</option>
+                        <option value="Planta">Planta</option>
+                        </select>  
                     </div>
                 </div>
 

@@ -31,29 +31,30 @@
                 </thead>
                 <tbody>
                     @foreach ($learning_environments as $learning_environment)
-                    <tr>
-                        <td>{{ $instructor['id'] }}</td>
-                        <td>{{ $instructor['name'] }}</td>
-                        <td>{{ $instructor['capacity'] }}</td>
-                        <td>{{ $instructor['area_mt2'] }}</td>
-                        <td>{{ $instructor['floor'] }}</td>
-                        <td>{{ $instructor['inventory'] }}</td>
-                        <td>{{ $instructor['type_id'] }}</td>
-                        <td>{{ $instructor['location_id'] }}</td>
-                        <td>{{ $instructor['status'] }}</td>
+                        <tr>
+                            <td>{{ $learning_environment['id'] }}</td>
+                            <td>{{ $learning_environment['name'] }}</td>
+                            <td>{{ $learning_environment['capacity'] }}</td>
+                            <td>{{ $learning_environment['area_mt2'] }}</td>
+                            <td>{{ $learning_environment['floor'] }}</td>
+                            <td>{{ $learning_environment['inventory'] }}</td>
+                            <td>{{ $learning_environment['type_id'] }}</td>
+                            <td>{{ $learning_environment['location_id'] }}</td>
+                            <td>{{ $learning_environment['status'] }}</td>
 
-                        <td>
-                            <a href="{{ route('learning_environment.edit', $learning_environment['id']) }}" title="editar" 
-                                class="btn btn-info btn-circle btn-sm">
-                                <i class="far fa-edit"></i>
-                            </a>
-                            <a href="{{ route('learning_environment.destroy', $learning_environment['id']) }}" title="eliminar" 
-                                class="btn btn-danger btn-circle btn-sm"
-                                onclick="return remove()">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+                            <td>
+                                <a href="{{ route('learning_environment.edit', $learning_environment['id']) }}" title="editar" 
+                                    class="btn btn-info btn-circle btn-sm">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="{{ route('learning_environment.destroy', $learning_environment['id']) }}" title="eliminar" 
+                                    class="btn btn-danger btn-circle btn-sm"
+                                    onclick="return remove()">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>        
         </div>

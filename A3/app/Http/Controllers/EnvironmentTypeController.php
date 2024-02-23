@@ -9,14 +9,13 @@ use Illuminate\Support\Facades\Validator;
 class EnvironmentTypeController extends Controller
 {
     private $rules = [
-        'description' => 'required|string|max:255|min:3'
+        'description' => 'required|string|min:3|max:255'
     ];
 
     private $traductionAttributes = [
-        'description' => 'descripcion'
+        'description' => 'descripción'
     ];
-   
-   
+
     /**
      * Display a listing of the resource.
      */
@@ -41,23 +40,14 @@ class EnvironmentTypeController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
-            $errors = $validator->errors();
-            return redirect()->route('environment_type.create')->withInput()->withErrors($errors);
+
+        if ($validator->fails()) {
+            return redirect()->route('environment_type.create')->withInput()->withErrors($validator);
         }
 
-        $environment_type = EnvironmentType::create($request->all());
+        EnvironmentType::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('environment_type.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
@@ -66,11 +56,12 @@ class EnvironmentTypeController extends Controller
     public function edit(string $id)
     {
         $environment_type = EnvironmentType::find($id);
-        if ($environment_type) {
-            return view('environment_type.edit', compact('environment_type'));//si la causal existe
-        } else {
-            return redirect()->route('environment_type.index');
+
+        if (!$environment_type) {
+            return redirect()->route('environment_type.index')->with('warning', 'No se encuentra el registro solicitado');
         }
+
+        return view('environment_type.edit', compact('environment_type'));
     }
 
     /**
@@ -78,23 +69,21 @@ class EnvironmentTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
-            $errors = $validator->errors();
-            return redirect()->route('environment_type.edit')->withInput()->withErrors($errors);
+
+        if ($validator->fails()) {
+            return redirect()->route('environment_type.edit', $id)->withInput()->withErrors($validator);
         }
-        
+
         $environment_type = EnvironmentType::find($id);
-        if ($environment_type)
-        {
-            $environment_type->update($request->all());
-            session()->flash('message', 'Registro actualizado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+
+        if (!$environment_type) {
+            return redirect()->route('environment_type.index')->with('warning', 'No se encuentra el registro solicitado');
         }
+
+        $environment_type->update($request->all());
+        session()->flash('message', 'Registro actualizado exitosamente');
         return redirect()->route('environment_type.index');
     }
 
@@ -104,12 +93,13 @@ class EnvironmentTypeController extends Controller
     public function destroy(string $id)
     {
         $environment_type = EnvironmentType::find($id);
-        if ($environment_type) {
-            $environment_type->delete();
-            session()->flash('message', 'Registro eliminado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+
+        if (!$environment_type) {
+            return redirect()->route('environment_type.index')->with('warning', 'No se encuentra el registro solicitado');
         }
+
+        $environment_type->delete();
+        session()->flash('message', 'Registro eliminado exitosamente');
         return redirect()->route('environment_type.index');
     }
 }

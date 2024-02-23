@@ -10,17 +10,16 @@ class LocationController extends Controller
 {
     private $rules = [
         'name' => 'required|string|max:255|min:3',
-        'addres' => 'required|string|max:255|min:3',
+        'address' => 'required|string|max:255|min:3',
         'status' => 'required|string|max:255|min:3'
     ];
 
     private $traductionAttributes = [
         'name' => 'nombre',
-        'addres' => 'direccion',
+        'address' => 'dirección',
         'status' => 'estado',
     ];
-    
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -45,75 +44,66 @@ class LocationController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
-            $errors = $validator->errors();
-            return redirect()->route('location.create')->withInput()->withErrors($errors);
+
+        if ($validator->fails()) {
+            return redirect()->route('location.create')->withInput()->withErrors($validator);
         }
-        
-        $location = Location::create($request->all());
+
+        Location::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('location.index');
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         $location = Location::find($id);
-        if ($location) {
-            return view('location.edit', compact('location'));
-        } else {
-            return redirect()->route('location.index');
+
+        if (!$location) {
+            return redirect()->route('location.index')->with('warning', 'No se encuentra el registro solicitado');
         }
+
+        return view('location.edit', compact('location'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
-            $errors = $validator->errors();
-            return redirect()->route('location.edit')->withInput()->withErrors($errors);
+
+        if ($validator->fails()) {
+            return redirect()->route('location.edit', $id)->withInput()->withErrors($validator);
         }
-        
-        
+
         $location = Location::find($id);
-        if ($location) {
-            $location->update($request->all());
-            session()->flash('message', 'Registro actualizado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+
+        if (!$location) {
+            return redirect()->route('location.index')->with('warning', 'No se encuentra el registro solicitado');
         }
+
+        $location->update($request->all());
+        session()->flash('message', 'Registro actualizado exitosamente');
         return redirect()->route('location.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $location = Location::find($id);
-        if ($location) {
-            $location->delete();
-            session()->flash('message', 'Registro eliminado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+
+        if (!$location) {
+            return redirect()->route('location.index')->with('warning', 'No se encuentra el registro solicitado');
         }
+
+        $location->delete();
+        session()->flash('message', 'Registro eliminado exitosamente');
         return redirect()->route('location.index');
     }
 }
-

@@ -64,10 +64,10 @@ Route::prefix('environment_type')->group(function () {
 Route::prefix('instructor')->group(function () {
     Route::get('/index', [InstructorController::class, 'index'])->name('instructor.index');
     Route::get('/create', [InstructorController::class, 'create'])->name('instructor.create');
-    Route::get('/edit/{id}', [InstructorController::class, 'edit'])->name('instructor.edit');
+    Route::get('/edit/{document}', [InstructorController::class, 'edit'])->name('instructor.edit');
     Route::post('create', [InstructorController::class, 'store'])->name('instructor.store');
-    Route::put('/edit/{id}', [InstructorController::class, 'update'])->name('instructor.update');
-    Route::get('/destroy/{id}', [InstructorController::class, 'destroy'])->name('instructor.destroy');
+    Route::put('/edit/{document}', [InstructorController::class, 'update'])->name('instructor.update');
+    Route::get('/destroy/{document}', [InstructorController::class, 'destroy'])->name('instructor.destroy');
 
 });
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class LearningEnviromentController extends Controller
 {
-   
+
     private $rules = [
         'name' => 'required|string|max:255|min:3',
         'capacity' => 'required|string|max:255|min:3',
@@ -30,15 +30,15 @@ class LearningEnviromentController extends Controller
         'location_id' => 'locacion',
         'status' => 'estado',
     ];
-   
-   
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $learning_environments = Learning_environment::all();  
-      
+        $learning_environments = Learning_environment::all();
+
         return view('learning_environment.index', compact('learning_environments'));
     }
 
@@ -57,12 +57,11 @@ class LearningEnviromentController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('learning_environment.create')->withInput()->withErrors($errors);
         }
-        
+
         $learning_environment = Learning_environment::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('learning_environment.index');
@@ -82,10 +81,9 @@ class LearningEnviromentController extends Controller
     public function edit(string $id)
     {
         $learning_environment = Learning_environment::find($id);
-        if($learning_environment){
+        if ($learning_environment) {
             return view('learning_environment.edit', compact('learning_environment'));
-        }
-        else{
+        } else {
             return redirect()->route('learning_environment.index');
         }
     }
@@ -97,38 +95,32 @@ class LearningEnviromentController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('learning_environment.edit')->withInput()->withErrors($errors);
         }
-        
-        
+
+
         $learning_environment = Learning_environment::find($id);
-        if($learning_environment)
-        {
+        if ($learning_environment) {
             $learning_environment->update($request->all());
             session()->flash('message', 'Registro actualizado exitosamente');
-        }
-        else{
+        } else {
             session()->flash('warning', 'No se encuentra el registro solicitado');
         }
-        return redirect()->route('learning_environment.index'); 
+        return redirect()->route('learning_environment.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        {
+    { {
             $learning_environment = Learning_environment::find($id);
-            if($learning_environment)
-            {
+            if ($learning_environment) {
                 $learning_environment->delete();
                 session()->flash('message', 'Registro eliminado exitosamente');
-            }
-            else{
+            } else {
                 session()->flash('warning', 'No se encuentra el registro solicitado');
             }
             return redirect()->route('learning_environment.index');

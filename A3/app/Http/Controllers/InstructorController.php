@@ -8,29 +8,28 @@ use Illuminate\Support\Facades\Validator;
 
 class InstructorController extends Controller
 {
-    
     private $rules = [
-        'document' => 'required|integer|max:99999999999999999999|min:1',
-        'fullname' => 'required|string|max:50|min:10',
+        'document' => 'required|integer|min:1|max:99999999999999999999',
+        'fullname' => 'required|string|min:10|max:50',
         'sena_email' => 'required|string|email|unique:instructors|max:40',
         'personal_email' => 'required|string|email|unique:instructors|max:50',
         'phone' => 'required|string|max:30',
-        'password' => 'required|string|max:255|min:8',
-        'type' => 'required|string|max:255|min:3',
-        'profile' => 'required|string|max:255|min:3',
+        'password' => 'required|string|min:8|max:255',
+        'type' => 'required|string|min:3|max:255',
+        'profile' => 'required|string|min:3|max:255',
     ];
 
     private $traductionAttributes = [
         'document' => 'documento',
         'fullname' => 'nombre completo',
-        'sena_email' => 'correo sena',
+        'sena_email' => 'correo Sena',
         'personal_email' => 'correo personal',
-        'phone' => 'telefono',
+        'phone' => 'teléfono',
         'password' => 'contraseña',
         'type' => 'tipo',
         'profile' => 'perfil',
     ];
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -53,48 +52,29 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-                
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
-            $errors = $validator->errors();
-            return redirect()->route('instructor.create')->withInput()->withErrors($errors);
-        }
-        
-        $instructor = Instructor::where('document', '=', $request->document)
-            ->first();
-        if ($instructor) {
-            session()->flash('error', 'Ya existe un instructor con ese documento');
-            return redirect()->route('instructor.create');
-        }
-        $instructor = Instructor::create($request->all());
-        session()->flash('message', 'Registro creado exitosamente');
-        return redirect()->route('instructor.index');
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        if ($validator->fails()) {
+            return redirect()->route('instructor.create')->withInput()->withErrors($validator);
+        }
+
+        $existingInstructor = Instructor::where('document', $request->document)->first();
+        if ($existingInstructor) {
+            return redirect()->route('instructor.create')->with('error', 'Ya existe un instructor con ese documento');
+        }
+
+        Instructor::create($request->all());
+        return redirect()->route('instructor.index')->with('message', 'Registro creado exitosamente');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $document)
     {
-        $instructor = Instructor::where('document', '=', $id)
-            ->first();
-        if ($instructor) {
-            return view('instructor.edit', compact('instructor'));
-
-        }
-
-        session()->flash('warning', 'No se encuentra el registro solicitado');
-        return redirect()->route('instructor.index');
+        $instructor = Instructor::where('document', $document)->firstOrFail();
+        return view('instructor.edit', compact('instructor'));
     }
 
     /**
@@ -102,48 +82,27 @@ class InstructorController extends Controller
      */
     public function update(Request $request, string $document)
     {
-                
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
-            $errors = $validator->errors();
-            return redirect()->route('instructor.edit')->withInput()->withErrors($errors);
-        }
-        
-        
-        $instructor = Instructor::where('document', '=', $document)
-            ->first();
-        if ($instructor) {
 
-            $instructor->name = $request->name;
-            $instructor->especiality = $request->especiality;
-            $instructor->phone = $request->phone;
-            $instructor->save();
-            session()->flash('message', 'Registro actualizado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
+        if ($validator->fails()) {
+            return redirect()->route('instructor.edit', ['document' => $document])->withInput()->withErrors($validator);
         }
 
-        return redirect()->route('instructor.index');
+        $instructor = Instructor::where('document', $document)->firstOrFail();
+        $instructor->update($request->only(['fullname', 'sena_email', 'phone']));
+
+        return redirect()->route('instructor.index')->with('message', 'Registro actualizado exitosamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $document)
     {
-        $instructor = Instructor::where('document', '=', $id)
-            ->first();
-        if ($instructor) {
+        $instructor = Instructor::where('document', $document)->firstOrFail();
+        $instructor->delete();
 
-            $instructor->delete();
-
-            session()->flash('message', 'Registro eliminado exitosamente');
-        } else {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
-        }
-
-        return redirect()->route('instructor.index');
+        return redirect()->route('instructor.index')->with('message', 'Registro eliminado exitosamente');
     }
 }

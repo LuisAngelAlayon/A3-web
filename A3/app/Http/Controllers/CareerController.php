@@ -9,16 +9,15 @@ use Illuminate\Support\Facades\Validator;
 class CareerController extends Controller
 {
     private $rules = [
-        'name' => 'required|string|max:255|min:5',
-        'type' => 'required|string|max:255|min:5',
+        'name' => 'required|string|min:5|max:255',
+        'type' => 'required|string|min:5|max:255',
     ];
 
     private $traductionAttributes = [
         'name' => 'nombre',
         'type' => 'tipo',
     ];
-    
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -43,23 +42,14 @@ class CareerController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
-            $errors = $validator->errors();
-            return redirect()->route('career.create')->withInput()->withErrors($errors);
+
+        if ($validator->fails()) {
+            return redirect()->route('career.create')->withInput()->withErrors($validator);
         }
-        
-        $career = Career::create($request->all());
+
+        Career::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('career.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
@@ -68,12 +58,11 @@ class CareerController extends Controller
     public function edit(string $id)
     {
         $career = Career::find($id);
-        if($career){
-            return view('career.edit', compact('career'));//si la causal existe
+        if (!$career) {
+            return redirect()->route('career.index')->with('warning', 'No se encuentra el registro solicitado');
         }
-        else{
-            return redirect()->route('career.index');
-        }
+
+        return view('career.edit', compact('career'));
     }
 
     /**
@@ -83,21 +72,18 @@ class CareerController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
-            $errors = $validator->errors();
-            return redirect()->route('career.edit')->withInput()->withErrors($errors);
+
+        if ($validator->fails()) {
+            return redirect()->route('career.edit', $id)->withInput()->withErrors($validator);
         }
-        
+
         $career = Career::find($id);
-        if($career)
-        {
-            $career->update($request->all());
-            session()->flash('message', 'Registro actualizado exitosamente');
+        if (!$career) {
+            return redirect()->route('career.index')->with('warning', 'No se encuentra el registro solicitado');
         }
-        else{
-            session()->flash('warning', 'No se encuentra el registro solicitado');
-        }
+
+        $career->update($request->all());
+        session()->flash('message', 'Registro actualizado exitosamente');
         return redirect()->route('career.index');
     }
 
@@ -107,15 +93,12 @@ class CareerController extends Controller
     public function destroy(string $id)
     {
         $career = Career::find($id);
-        if($career)
-        {
-            $career->delete();
-            session()->flash('message', 'Registro eliminado exitosamente');
+        if (!$career) {
+            return redirect()->route('career.index')->with('warning', 'No se encuentra el registro solicitado');
         }
-        else{
-            session()->flash('warning', 'No se encuentra el registro solicitado');
-        }
+
+        $career->delete();
+        session()->flash('message', 'Registro eliminado exitosamente');
         return redirect()->route('career.index');
     }
 }
-
