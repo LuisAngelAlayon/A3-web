@@ -19,7 +19,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Descripción</th>
-                        <th>Acciones</th>
+                    
                     </tr>
                        
                 </thead>
@@ -28,6 +28,8 @@
                         <tr>
                             <td>{{ $environment_type['id'] }}</td>
                             <td>{{ $environment_type['description'] }}</td>
+                          
+                           
                             
                             <td>
                                 <a href="{{ route('environment_type.edit', $environment_type['id']) }}" title="editar" 
