@@ -3,6 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\UnauthorizedException;
+use Spatie\FlareClient\Http\Exceptions\NotFound;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -27,4 +31,38 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+    {
+        if($exception instanceof NotFoundHttpException)
+        {
+            if(Auth::check())
+            {
+                return response()->view('errors.404', [], 404);
+            }
+            else
+            {
+                return redirect()->route('auth.index');
+            }
+            
+        }
+
+        if($exception instanceof UnauthorizedException)
+        {
+            if(Auth::check())
+            {
+                return response()->view('errors.403', [], 403);
+            }
+            else
+            {
+                return redirect()->route('auth.index');
+            }
+            
+        }
+
+        return parent::render($request, $exception);
+
+        
+    }
 }
+
