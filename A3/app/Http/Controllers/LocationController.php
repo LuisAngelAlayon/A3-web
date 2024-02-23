@@ -4,9 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LocationController extends Controller
 {
+    private $rules = [
+        'name' => 'required|string|max:255|min:3',
+        'addres' => 'required|string|max:255|min:3',
+        'status' => 'required|string|max:255|min:3'
+    ];
+
+    private $traductionAttributes = [
+        'name' => 'nombre',
+        'addres' => 'direccion',
+        'status' => 'estado',
+    ];
+    
+    
     /**
      * Display a listing of the resource.
      */
@@ -29,6 +43,14 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('location.create')->withInput()->withErrors($errors);
+        }
+        
         $location = Location::create($request->all());
         session()->flash('message', 'Registro creado exitosamente');
         return redirect()->route('location.index');
@@ -49,7 +71,7 @@ class LocationController extends Controller
     {
         $location = Location::find($id);
         if ($location) {
-            return view('location.edit', compact('location'));//si la causal existe
+            return view('location.edit', compact('location'));
         } else {
             return redirect()->route('location.index');
         }
@@ -60,6 +82,15 @@ class LocationController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('location.edit')->withInput()->withErrors($errors);
+        }
+        
+        
         $location = Location::find($id);
         if ($location) {
             $location->update($request->all());
@@ -77,7 +108,7 @@ class LocationController extends Controller
     {
         $location = Location::find($id);
         if ($location) {
-            $location->delete();//delete from causal where id = x
+            $location->delete();
             session()->flash('message', 'Registro eliminado exitosamente');
         } else {
             session()->flash('warning', 'No se encuentra el registro solicitado');

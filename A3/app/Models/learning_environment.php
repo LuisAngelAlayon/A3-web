@@ -34,6 +34,6 @@ class Learning_environment extends Model
     }
     public function scheduling_environments()
     {
-        return $this->hasMany(SchedulingEnvironment::class);
+        return $this->hasMany(Scheduling_environment::class);
     }
 }

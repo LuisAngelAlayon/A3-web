@@ -4,9 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class InstructorController extends Controller
 {
+    
+    private $rules = [
+        'document' => 'required|integer|max:99999999999999999999|min:1',
+        'fullname' => 'required|string|max:50|min:10',
+        'sena_email' => 'required|string|email|unique:instructors|max:40',
+        'personal_email' => 'required|string|email|unique:instructors|max:50',
+        'phone' => 'required|string|max:30',
+        'password' => 'required|string|max:255|min:8',
+        'type' => 'required|string|max:255|min:3',
+        'profile' => 'required|string|max:255|min:3',
+    ];
+
+    private $traductionAttributes = [
+        'document' => 'documento',
+        'fullname' => 'nombre completo',
+        'sena_email' => 'correo sena',
+        'personal_email' => 'correo personal',
+        'phone' => 'telefono',
+        'password' => 'contraseña',
+        'type' => 'tipo',
+        'profile' => 'perfil',
+    ];
+    
     /**
      * Display a listing of the resource.
      */
@@ -29,6 +53,15 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
+                
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('instructor.create')->withInput()->withErrors($errors);
+        }
+        
         $instructor = Instructor::where('document', '=', $request->document)
             ->first();
         if ($instructor) {
@@ -69,6 +102,16 @@ class InstructorController extends Controller
      */
     public function update(Request $request, string $document)
     {
+                
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('instructor.edit')->withInput()->withErrors($errors);
+        }
+        
+        
         $instructor = Instructor::where('document', '=', $document)
             ->first();
         if ($instructor) {
