@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnvironmentTypeController;
@@ -20,10 +21,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [AuthController::class, 'index']);
+
+Route::middleware('auth')->get('/index', function () {
     return view('index');
 })->name('index');
 
+Route::middleware('auth')->get('/index', function () {
+    return view('index');
+})->name('index');
+
+
+// Route::get('/test2', function () {
+//     return view('test2');
+// })->name('test2');
+
+
+
+
+Route::prefix('auth')->group(function () {
+    Route::get('/index', [AuthController::class, 'index'])->name('auth.index');
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/register', [AuthController::class, 'create'])->name('auth.register');
+    Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
+});
 
 
 Route::prefix('career')->group(function () {
