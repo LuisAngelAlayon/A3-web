@@ -129,6 +129,9 @@ Route::prefix('scheduling_environment')->group(function () {
 
 Route::prefix('reports')->group(function () {
     Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
+    Route::post('/export_learning_environments', [ReportController::class, 'export_learning_environments'])
+        ->name('reports.learning_environments');
+
 
 
 });

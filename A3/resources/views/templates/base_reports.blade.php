@@ -8,12 +8,12 @@
     <section id="header">
         <table widht="100%" style="border-collapse: collapse; border: 1px solid;">
             <th>
-                <div style="text-align: center">
+                <div style="text-align: center;">
                     <img src="{{ asset('img/logoA3.png') }}" alt="logo">
                 </div>
             </th>
             <th>
-                <p style="text-align: center; font-size: 14px;">
+                <p style="text-align: center; font-size: 14px;;">
                     @yield('header')
                 </p>
             </th>
@@ -33,7 +33,7 @@
     @yield('content')
 
     <footer id="version_text">
-        <p>Generado Por Web A3</p>
+        <p style="font-size: 12px; text-align: center">Generado Por Web A3</p>
     </footer>
 </body>
 </html>

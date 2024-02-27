@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EnvironmentType;
+use App\Models\Learning_environment;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -11,9 +14,25 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('reports.index');
+        $learning_environments = Learning_environment::all();
+        $environment_types = EnvironmentType::all();
+
+        return view('reports.index', compact('learning_environments', 'environment_types'));
     }
 
+
+    public function export_learning_environments()
+    {
+        $learning_environments = Learning_environment::all();
+        $environment_types = EnvironmentType::all();
+
+        $data = array(
+            'learning_environments' => $learning_environments,
+            'environment_types' => $environment_types
+        );
+        $pdf = Pdf::loadView('reports.export_learning_environment', $data)->setPaper('letter', 'portrait');
+        return $pdf->download('LearningEnvironments.pdf');
+    }
     /**
      * Show the form for creating a new resource.
      */
