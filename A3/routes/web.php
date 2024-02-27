@@ -7,6 +7,7 @@ use App\Http\Controllers\EnvironmentTypeController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\LearningEnviromentController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\schedulingEnvironmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -122,6 +123,13 @@ Route::prefix('scheduling_environment')->group(function () {
     Route::post('create', [SchedulingEnvironmentController::class, 'store'])->name('scheduling_environment.store');
     Route::put('/edit/{id}', [SchedulingEnvironmentController::class, 'update'])->name('scheduling_environment.update');
     Route::get('/destroy/{id}', [SchedulingEnvironmentController::class, 'destroy'])->name('scheduling_environment.destroy');
+
+});
+
+
+Route::prefix('reports')->group(function () {
+    Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
+
 
 });
 

@@ -49,9 +49,7 @@
                                             </button>
                                         </form>
                                         <hr>
-                                        <div class="text-center">
-                                            <a href="{{ route('auth.register') }}" class="small">Registrarse</a>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>
