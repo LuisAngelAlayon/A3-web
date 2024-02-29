@@ -33,9 +33,6 @@ Route::middleware('auth')->get('/index', function () {
 })->name('index');
 
 
-// Route::get('/test2', function () {
-//     return view('test2');
-// })->name('test2');
 
 
 
@@ -43,9 +40,6 @@ Route::middleware('auth')->get('/index', function () {
 Route::prefix('auth')->group(function () {
     Route::get('/index', [AuthController::class, 'index'])->name('auth.index');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    Route::get('/register', [AuthController::class, 'create'])->name('auth.register');
-    Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 });
 
 

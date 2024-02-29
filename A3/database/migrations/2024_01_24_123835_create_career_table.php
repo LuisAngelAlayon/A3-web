@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('career', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('Nombres de Programas');
-            $table->string('type')->nullable()->comment('TECNICO', 'TECNOLOGICO');
+            $table->string('type')->nullable()->comment('tipos de Programas');
             $table->timestamps();
         });
     }
