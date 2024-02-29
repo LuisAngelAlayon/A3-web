@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-lg-12 mb-4 d-grip gap-2 d-md-block">
             <a href="{{ route('course.create') }}" class="btn btn-primary">Crear actividad</a>
+            <a href="{{ route('courses.pdf') }}" class="btn btn-primary">Generar PDF</a>
         </div>
     </div>
 

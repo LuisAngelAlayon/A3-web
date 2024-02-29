@@ -15,7 +15,7 @@ class TestCourseSeeder extends Seeder
     {
 
         $course = new Course();
-        $course->code = "TPS";
+        $course->code = "2771230";
         $course->shift = "DIURNO";
         $course->career_id = 1;
         $course->initial_date = "2024-01-29";
@@ -24,7 +24,7 @@ class TestCourseSeeder extends Seeder
         $course->save();
 
         $course = new Course();
-        $course->code = "ADSO";
+        $course->code = "2773030";
         $course->shift = "NOCTURNA";
         $course->career_id = 2;
         $course->initial_date = "2024-01-29";
@@ -33,7 +33,7 @@ class TestCourseSeeder extends Seeder
         $course->save();
 
         $course = new Course();
-        $course->code = "ADMINISTRACIÓN SALUD";
+        $course->code = "4050232";
         $course->shift = "DIURNO";
         $course->career_id = 3;
         $course->initial_date = "2024-01-29";
@@ -42,7 +42,7 @@ class TestCourseSeeder extends Seeder
         $course->save();
 
         $course = new Course();
-        $course->code = "GESTION DOCUMENTAL";
+        $course->code = "1025092";
         $course->shift = "NOCTURNA";
         $course->career_id = 4;
         $course->initial_date = "2024-01-29";
@@ -51,7 +51,7 @@ class TestCourseSeeder extends Seeder
         $course->save();
 
         $course = new Course();
-        $course->code = "ING.SOFTWARE";
+        $course->code = "2930298";
         $course->shift = "DIURNO";
         $course->career_id = 5;
         $course->initial_date = "2024-01-29";

@@ -14,7 +14,7 @@ class TestEnvironmentTypeSeeder extends Seeder
     public function run(): void
     {
         $EnvironmentType = new EnvironmentType();
-        $EnvironmentType->description = "AULA DE COMPUTACIÓN";
+        $EnvironmentType->description = "AULA DE COMPUTACION";
         $EnvironmentType->save();
     }
 }

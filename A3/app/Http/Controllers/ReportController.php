@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
+use App\Models\Course;
 use App\Models\EnvironmentType;
 use App\Models\Learning_environment;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -32,6 +34,22 @@ class ReportController extends Controller
         );
         $pdf = Pdf::loadView('reports.export_learning_environment', $data)->setPaper('letter', 'portrait');
         return $pdf->download('LearningEnvironments.pdf');
+    }
+
+    public function generatePdf()
+    {
+        $courses = Course::all();
+        $careers = Career::all()->find('1')->name;
+
+
+        $data = array(
+            'courses' => $courses
+            ,
+            'careers' => $careers
+        );
+
+        $pdf = PDF::loadView('course.pdf', $data)->setPaper('letter', 'portrait');
+        return $pdf->download('courses.pdf');
     }
     /**
      * Show the form for creating a new resource.

@@ -1,7 +1,7 @@
 
 @extends('templates.base')
-@section('title', 'Listado de Reportes Generales de ambientes de aprendizaje')
-@section('header', 'Listado de Reportes Generales de ambientes de aprendizaje')
+@section('title', 'Listado de Reportes')
+@section('header', 'Listado de Reportes')
 @section('content')
     @include('templates.messages')
     
@@ -39,7 +39,6 @@
             </div>
         </div>
     </div>
-    
-    
+
     
 @endsection  

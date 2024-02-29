@@ -14,7 +14,7 @@ class TestLearning_environmentSeeder extends Seeder
     public function run(): void
     {
         $learning_environment = new Learning_environment();
-        $learning_environment->name = "Sena Centro de Computación";
+        $learning_environment->name = "Sena Centro de Computacion";
         $learning_environment->capacity = "30";
         $learning_environment->area_mt2 = "80";
         $learning_environment->floor = "Segundo";
