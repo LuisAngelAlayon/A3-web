@@ -59,10 +59,10 @@
                         <label for="type">Tipo</label>
                         <select name="type" id="type"
                             class="form-control" required>
-                            <option value="Seleccionar">Seleccionar</option>
-                            <option value="Planta">Planta</option>
-                            <option value="Contratista">Contratista</option
-                            value="{{ $instructor['type'] }}">  
+                            <option value="">Seleccione</option>
+                            @foreach($types as $type)
+                                <option value="{{ $type['value'] }}">{{ $type['name'] }} </option>
+                            @endforeach
                         </select>
                     </div>  
                     <div class="col-lg-6 mb-4">

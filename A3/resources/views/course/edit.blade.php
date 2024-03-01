@@ -21,27 +21,22 @@
                     <div class="col lg-4 mb-4">
                     <label for="shift">Jornada</label>
                         <select name="shift" id="shift"
-                        class="form-control" required
-                        value="{{ $course['shift'] }}">
-                        <option value="Seleccionar">Seleccionar</option>
-                        <option value="Diurna">Diurna</option>
-                        <option value="Mixta">Mixta</option>
-                        <option value="Nocturna">Nocturna</option> 
-                        </select>
+                        class="form-control" required>
+                        <option value="">Seleccione</option>
+                            @foreach($shifts as $shift)
+                            <option value="{{ $shift['value'] }}"
+                             @if($shift['value'] == $course['shift']) selected @endif>
+                             {{ $shift['name'] }} </option>
+                        @endforeach
                     </div>
                 
                 
                     <div class="col lg-4 mb-4">
                         <label for="career_id">Carrera</label>
                         <select name="career_id" id="career_id"
-                        class="form-control" required
-                        value="{{ $course['career_id'] }}">
-                        <option value="">Seleccionar</option>
-                            <option value="1">TPS</option>
-                            <option value="2">ADSO</option>
-                            <option value="3">ADMINISTRACIÓN SALUD</option>
-                            <option value="4">GESTION DOCUMENTAL</option>
-                            <option value="5">ING.SOFTWARE</option>
+                        class="form-control" required>
+                        <option value="1">TPS</option>
+                        <option value="2"></option>
                         </select>    
                     </div>
                 </div>
@@ -60,12 +55,12 @@
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="status">Estado</label>
-                        <select type="text" class="form-control"
-                        id="status" name="status" required
-                        value="{{ $course['status'] }}">
-                        <option value="Seleccionar">Seleccionar</option>
-                        <option value="ACTIVO">ACTIVO</option>
-                        <option value="INACTIVO">INACTIVO</option>  
+                        <select name="status" id="status"
+                            class="form-control" required>
+                            <option value="">Seleccione</option>
+                            @foreach($status as $s)
+                            <option value="{{ $s['value'] }}">{{ $s['name'] }} </option>
+                        @endforeach
                         </select>
                     </div>
                 </div>

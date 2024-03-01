@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -65,12 +66,25 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         if (!$course) {
-            return redirect()->route('course.index')->with('warning', 'No se encuentra el registro solicitado');
+            $careers = Career::all();
+            $status = array(
+                ['name' => 'LECTIVA', 'value' => 'LECTIVA'],
+                ['name' => 'PRODUCTIVA', 'value' => 'PRODUCTIVA'],
+                ['name' => 'INDUCCIÓN', 'value' => 'INDUCCIÓN'],
+            );
+            $shifts = array(
+                ['name' => 'DIURNA', 'value' => 'DIURNA'],
+                ['name' => 'MIXTA', 'value' => 'MIXTA'],
+                ['name' => 'NOCTURNA', 'value' => 'NOCTURNA'],
+            );
+
+            return view('course.edit', compact('course','careers', 'status', 'shifts'));
         }
-
-        return view('course.edit', compact('course'));
+        
+        
+            session()->flash('warning', 'No se encuentra el registro solicitado');
+            return redirect()->route('course.index');
     }
-
     /**
      * Update the specified resource in storage.
      */

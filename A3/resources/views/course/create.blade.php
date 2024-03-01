@@ -20,10 +20,10 @@
                         <label for="shift">Jornada</label>
                         <select name="shift" id="shift"
                         class="form-control" required>
-                        <option value="Seleccionar">Seleccionar</option>
-                        <option value="Diurna">Diurna</option>
-                        <option value="Mixta">Mixta</option>
-                        <option value="Nocturna">Nocturna</option> 
+                        <option value="">Seleccione</option>
+                        @foreach($shifts as $shift)
+                        <option value="{{ $shift['value'] }}">{{ $shift['name'] }} </option>
+                       @endforeach
                         </select>
                     </div>
                 </div>
@@ -33,12 +33,14 @@
                         <select name="career_id" id="career_id"
                             class="form-control" required>
                             <option value="">Seleccionar</option>
-                            <option value="1">TPS</option>
-                            <option value="2">ADSO</option>
-                            <option value="3">ADMINISTRACIÓN SALUD</option>
-                            <option value="4">GESTION DOCUMENTAL</option>
-                            <option value="5">ING.SOFTWARE</option>
-                        </select>  
+                            @isset($carrers)
+
+                            @foreach($careers as $career)
+                            <option value="{{ $Career['value'] }}"@if (old('career') == $career['name']) selected @endif> 
+                                {{ $career['name'] }} </option>
+                            @endforeach
+                            @endisset
+                        </select>
                     </div>
                 </div>  
                 <div class="row form-group">
@@ -56,9 +58,10 @@
                         <label for="status">Estado</label>
                         <select name="status" id="status"
                             class="form-control" required>
-                            <option value="Estado">Estado</option>  
-                            <option value="ACTIVO">ACTIVO</option>
-                            <option value="INACTIVO">INACTIVO</option>
+                            <option value="">Seleccione</option>
+                            @foreach($status as $s)
+                            <option value="{{ $s['value'] }}">{{ $s['name'] }} </option>
+                        @endforeach
                         </select>
                     </div>
                 </div>

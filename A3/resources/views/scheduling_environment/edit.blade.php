@@ -16,19 +16,17 @@
                         <label for="course_id">Curso</label>
                         <select name="course_id" id="course_id" class="form-control" required>
                             <option value="">Seleccionar</option>
-                            <option value="1" {{ $scheduling_environment['course_id'] == 1 ? 'selected' : '' }}>TPS</option>
-                            <option value="2" {{ $scheduling_environment['course_id'] == 2 ? 'selected' : '' }}>ADSO</option>
-                            <!-- Agrega opciones para otros cursos -->
+                        @foreach($courses as $course)
+                            <option value="{{ $course['course_id'] }}"
+                            @if(old('course_id') == $course['id']) selected @endif>
+                            {{ $course['name'] }}</option>
+                         @endforeach
                         </select>  
                     </div>
                     <div class="col-lg-4 mb-4">    
                         <label for="instructor_document">Documento Instructor</label>
-                        <select name="instructor_document" id="instructor_document" class="form-control" required>
-                            <option value="">Seleccionar</option>
-                            <option value="1" {{ $scheduling_environment['instructor_document'] == 1 ? 'selected' : '' }}>130587343</option>
-                            <option value="2" {{ $scheduling_environment['instructor_document'] == 2 ? 'selected' : '' }}>999693972</option>
-                            <!-- Agrega opciones para otros documentos de instructor -->
-                        </select>   
+                        <select name="instructor_document" id="instructor_document" class="form-control" required
+                        value="{{ $scheduling_environment['document_instructor'] }}">
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="date_scheduling">Fecha de programación</label>
@@ -38,18 +36,23 @@
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
                         <label for="initial_hour">Hora inicial</label>
-                        <input type="time" class="form-control" id="initial_hour" name="initial_hour" required value="{{ $scheduling_environment['initial_hour'] }}">    
+                        <input type="time" class="form-control" id="initial_hour" name="initial_hour" required 
+                        value="{{ $scheduling_environment['initial_hour'] }}">    
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="final_hour">Hora final</label>
-                        <input type="time" class="form-control" id="final_hour" name="final_hour" required value="{{ $scheduling_environment['final_hour'] }}">    
+                        <input type="time" class="form-control" id="final_hour" name="final_hour" required 
+                        value="{{ $scheduling_environment['final_hour'] }}">    
                     </div>
                     <div class="col-lg-4 mb-4">    
                         <label for="environment_id">Ambiente de aprendizaje</label>
                         <select name="environment_id" id="environment_id" class="form-control" required>
                             <option value="">Seleccionar</option>
-                            <option value="1" {{ $scheduling_environment['environment_id'] == 1 ? 'selected' : '' }}>TPS</option>
-                            <option value="2" {{ $scheduling_environment['environment_id'] == 2 ? 'selected' : '' }}>ADSO</option>
+                            @foreach($learning_environments as $learning_environment)
+                                <option value="{{ $learning_environment['environment_id'] }}"
+                                @if(old('environment_id') == $course['id']) selected @endif>
+                                {{ $course['name'] }}</option>
+                             @endforeach
                         </select>
                     </div>
                 </div>

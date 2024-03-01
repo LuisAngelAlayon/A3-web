@@ -40,10 +40,12 @@ Route::middleware('auth')->get('/index', function () {
 Route::prefix('auth')->group(function () {
     Route::get('/index', [AuthController::class, 'index'])->name('auth.index');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 });
 
 
-Route::prefix('career')->group(function () {
+Route::middleware('career')->group(function () {
     Route::get('/index', [CareerController::class, 'index'])->name('career.index');
     Route::get('/create', [CareerController::class, 'create'])->name('career.create');
     Route::get('/edit/{id}', [CareerController::class, 'edit'])->name('career.edit');
@@ -54,7 +56,7 @@ Route::prefix('career')->group(function () {
 });
 
 
-Route::prefix('course')->group(function () {
+Route::middleware('course')->group(function () {
     Route::get('/index', [CourseController::class, 'index'])->name('course.index');
     Route::get('/create', [CourseController::class, 'create'])->name('course.create');
     Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
@@ -67,7 +69,7 @@ Route::prefix('course')->group(function () {
 
 
 
-Route::prefix('environment_type')->group(function () {
+Route::middleware('environment_type')->group(function () {
     Route::get('/index', [EnvironmentTypeController::class, 'index'])->name('environment_type.index');
     Route::get('/create', [EnvironmentTypeController::class, 'create'])->name('environment_type.create');
     Route::get('/edit/{id}', [EnvironmentTypeController::class, 'edit'])->name('environment_type.edit');
@@ -78,7 +80,7 @@ Route::prefix('environment_type')->group(function () {
 });
 
 
-Route::prefix('instructor')->group(function () {
+Route::middleware('instructor')->group(function () {
     Route::get('/index', [InstructorController::class, 'index'])->name('instructor.index');
     Route::get('/create', [InstructorController::class, 'create'])->name('instructor.create');
     Route::get('/edit/{document}', [InstructorController::class, 'edit'])->name('instructor.edit');
@@ -88,7 +90,7 @@ Route::prefix('instructor')->group(function () {
 
 });
 
-Route::prefix('learning_environment')->group(function () {
+Route::middleware('learning_environment')->group(function () {
     Route::get('/index', [LearningEnviromentController::class, 'index'])->name('learning_environment.index');
     Route::get('/create', [LearningEnviromentController::class, 'create'])->name('learning_environment.create');
     Route::get('/edit/{id}', [LearningEnviromentController::class, 'edit'])->name('learning_environment.edit');
@@ -99,7 +101,7 @@ Route::prefix('learning_environment')->group(function () {
 });
 
 
-Route::prefix('location')->group(function () {
+Route::middleware('location')->group(function () {
     Route::get('/index', [LocationController::class, 'index'])->name('location.index');
     Route::get('/create', [LocationController::class, 'create'])->name('location.create');
     Route::get('/edit/{id}', [LocationController::class, 'edit'])->name('location.edit');
@@ -110,7 +112,7 @@ Route::prefix('location')->group(function () {
 });
 
 
-Route::prefix('scheduling_environment')->group(function () {
+Route::middleware('scheduling_environment')->group(function () {
     Route::get('/index', [SchedulingEnvironmentController::class, 'index'])->name('scheduling_environment.index');
     Route::get('/create', [SchedulingEnvironmentController::class, 'create'])->name('scheduling_environment.create');
     Route::get('/edit/{id}', [SchedulingEnvironmentController::class, 'edit'])->name('scheduling_environment.edit');
@@ -121,7 +123,7 @@ Route::prefix('scheduling_environment')->group(function () {
 });
 
 
-Route::prefix('reports')->group(function () {
+Route::middleware('reports')->group(function () {
     Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
     Route::post('/export_learning_environments', [ReportController::class, 'export_learning_environments'])
         ->name('reports.learning_environments');

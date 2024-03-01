@@ -21,24 +21,28 @@
                     <div class="col-lg-6 mb-4">
                         <label for="capacity">Capacidad</label>
                         <input type="number" class="form-control"
-                        id="capacity" name="capacity" required>    
+                        id="capacity" name="capacity" required
+                        value="{{ old('capacity') }}">>    
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="area_mt2">Area en mt2</label>
                         <input type="number" class="form-control"
-                        id="area_mt2" name="area_mt2" required>    
+                        id="area_mt2" name="area_mt2" required
+                        value="{{ old('area_mt2') }}">    
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <label for="floor">Piso</label>
                         <input type="number" class="form-control"
-                        id="floor" name="floor" required>    
+                        id="floor" name="floor" required
+                        value="{{ old('floor') }}">    
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="inventory">Inventario</label>
                         <input type="text" class="form-control"
-                        id="inventory" name="inventory" required>    
+                        id="inventory" name="inventory" required
+                        value="{{ old('inventory') }}">    
                     </div>
                 </div>
                 <div class="row form-group">
@@ -46,17 +50,20 @@
                         <label for="type_id">Tipo</label>
                         <select name="type_id" id="type_id"
                             class="form-control" required>
-                            <option value="">Seleccionar</option>
+                            <option value="">Seleccione</option>
+                                @foreach($environments_types as $environment_type)
+                                    <option value="{{ $environment_type['id'] }}">{{ $environment_type['description'] }} </option>
+                                 @endforeach
                         </select> 
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="location_id">Locación</label>
                         <select name="location_id" id="location_id"
                             class="form-control" required>
-                            <option value="">Seleccionar</option>
-                            <option value="Sagrado Corazón">Sagrado Corazón</option>
-                            <option value="Colegio Salesiano">Colegio Salesiano</option>
-                            <option value="CLEM">CLEM</option>
+                            <option value="">Seleccione</option>
+                            @foreach($locations_id as $location_id)
+                                <option value="{{ $location['id'] }}">{{ $location['name'] }} </option>
+                             @endforeach
                         </select>    
                     </div>
                 <div class="row form-group">

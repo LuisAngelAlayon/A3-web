@@ -21,11 +21,12 @@
                     <div class="col-lg-6 mb-4">
                         <label for="type">Tipo</label>
                         <select name="type" id="type"
-                        class="form-control" required
-                        value="{{ $career['type'] }}">
-                        <option value="Seleccionar">Seleccionar</option>
-                        <option value="TÉCNICO">Tecnico</option>
-                        <option value="TECNOLOGO">Tecnologo</option>
+                        class="form-control" required>
+                        <option value="">Seleccione</option>
+                        @foreach($types as $type)
+                        <option value="{{ $type['value'] }}"@if (old('type') == $type['name']) selected @endif> 
+                            {{ $type['name'] }} </option>
+                        @endforeach
                         </select>   
                     </div>
                 </div>
