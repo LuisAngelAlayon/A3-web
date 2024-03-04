@@ -55,13 +55,14 @@
                         <label for="learning_environment_id">Ambiente de aprendizaje</label>
                         <select name="learning_environment_id" id="learning_environment_id" class="form-control" required>
                             <option value="">Seleccionar</option>
-                                @foreach($learning_environments as $learning_environment)
-                                <option value="{{ $learning_environment['environment_id'] }}"
-                                @if(old('environment_id') == $course['id']) selected @endif>
-                                {{ $course['name'] }}</option>
-                             @endforeach
+                            @foreach($learning_environments as $learning_environment)
+                                <option value="{{ $learning_environment['id'] }}" @if(old('learning_environment_id') == $learning_environment['id']) selected @endif>
+                                    {{ $learning_environment['name'] }}
+                                </option>
+                            @endforeach
                         </select>      
                     </div>
+                    
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">

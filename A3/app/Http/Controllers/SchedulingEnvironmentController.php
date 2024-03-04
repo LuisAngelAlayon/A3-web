@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Instructor;
+use App\Models\Learning_environment;
 use App\Models\Scheduling_environment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -44,8 +45,13 @@ class SchedulingEnvironmentController extends Controller
      */
     public function create()
     {
-        return view('scheduling_environment.create');
+        $courses = Course::all();
+        $learning_environments = Learning_environment::all();
+
+        return view('scheduling_environment.create', compact('courses', 'learning_environments'));
     }
+
+
 
     /**
      * Store a newly created resource in storage.

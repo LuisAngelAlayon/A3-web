@@ -66,7 +66,7 @@
                 <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('environment_type.index') }}">Tipo de ambiente</a>
-                        <a class="collapse-item" href="{{ route('environment_type.create') }}">Tipo de ambiente</a>
+                        <a class="collapse-item" href="{{ route('environment_type.create') }}">Crear Tipo de ambiente</a>
                     </div>
                 </div>
             </li>

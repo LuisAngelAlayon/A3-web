@@ -44,8 +44,13 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        return view('instructor.create');
+        $types = array(
+            ['name' => 'Instructor', 'value' => 'instructor'],
+        );
+
+        return view('instructor.create', compact('types'));
     }
+
 
     /**
      * Store a newly created resource in storage.

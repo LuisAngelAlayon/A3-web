@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EnvironmentType;
 use App\Models\Learning_environment;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,8 +49,13 @@ class LearningEnviromentController extends Controller
      */
     public function create()
     {
-        return view('learning_environment.create');
+        $environments_types = EnvironmentType::all();
+        $locations = Location::all();
+
+        return view('learning_environment.create', compact('environments_types', 'locations'));
     }
+
+
 
     /**
      * Store a newly created resource in storage.

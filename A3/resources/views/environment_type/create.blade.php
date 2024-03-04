@@ -16,7 +16,7 @@
                         <label for="description">Descripción</label>
                         <input type="text" class="form-control"
                         id="description" name="description" required
-                        value="{{ old('description') }}">>    
+                        value="{{ old('description') }}"> 
                     </div>
                 </div>
 

@@ -32,8 +32,15 @@ class CareerController extends Controller
      */
     public function create()
     {
-        return view('career.create');
+        $types = array(
+            ['name' => 'Tecnologia'],
+            ['name' => 'Tecnico'],
+            ['name' => 'Ingeniero'],
+        );
+
+        return view('career.create', compact('types'));
     }
+
 
     /**
      * Store a newly created resource in storage.

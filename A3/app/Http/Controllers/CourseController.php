@@ -30,6 +30,7 @@ class CourseController extends Controller
      */
     public function index()
     {
+
         $courses = Course::all();
         return view('course.index', compact('courses'));
     }
@@ -37,10 +38,28 @@ class CourseController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
-        return view('course.create');
+        $shifts = array(
+            ['name' => 'DIURNA', 'value' => 'DIURNA'],
+            ['name' => 'MIXTA', 'value' => 'MIXTA'],
+            ['name' => 'NOCTURNA', 'value' => 'NOCTURNA'],
+        );
+
+        $status = array(
+            ['name' => 'LECTIVA', 'value' => 'LECTIVA'],
+            ['name' => 'PRODUCTIVA', 'value' => 'PRODUCTIVA'],
+            ['name' => 'INDUCCIÓN', 'value' => 'INDUCCIÓN'],
+        );
+
+        $careers = Career::all();
+
+        return view('course.create', compact('shifts', 'status', 'careers'));
     }
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -78,13 +97,13 @@ class CourseController extends Controller
                 ['name' => 'NOCTURNA', 'value' => 'NOCTURNA'],
             );
 
-            return view('course.edit', compact('course','careers', 'status', 'shifts'));
+            return view('course.edit', compact('course', 'careers', 'status', 'shifts'));
         }
-        
-        
-            session()->flash('warning', 'No se encuentra el registro solicitado');
-            return redirect()->route('course.index');
+
+        session()->flash('warning', 'No se encuentra el registro solicitado');
+        return redirect()->route('course.index');
     }
+
     /**
      * Update the specified resource in storage.
      */

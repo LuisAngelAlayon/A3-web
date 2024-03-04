@@ -22,7 +22,7 @@
                         <label for="capacity">Capacidad</label>
                         <input type="number" class="form-control"
                         id="capacity" name="capacity" required
-                        value="{{ old('capacity') }}">>    
+                        value="{{ old('capacity') }}">   
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="area_mt2">Area en mt2</label>
@@ -61,7 +61,7 @@
                         <select name="location_id" id="location_id"
                             class="form-control" required>
                             <option value="">Seleccione</option>
-                            @foreach($locations_id as $location_id)
+                            @foreach($locations as $location)
                                 <option value="{{ $location['id'] }}">{{ $location['name'] }} </option>
                              @endforeach
                         </select>    
