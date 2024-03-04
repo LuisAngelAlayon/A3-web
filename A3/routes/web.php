@@ -8,7 +8,7 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\LearningEnviromentController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\schedulingEnvironmentController;
+use App\Http\Controllers\SchedulingEnvironmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,17 +24,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'index']);
 
-Route::middleware('auth')->get('/index', function () {
-    return view('index');
-})->name('index');
 
 Route::middleware('auth')->get('/index', function () {
     return view('index');
 })->name('index');
-
-
-
-
 
 
 Route::prefix('auth')->group(function () {
@@ -45,7 +38,7 @@ Route::prefix('auth')->group(function () {
 });
 
 
-Route::middleware('career')->group(function () {
+Route::middleware(['auth'])->prefix('career')->group(function () {
     Route::get('/index', [CareerController::class, 'index'])->name('career.index');
     Route::get('/create', [CareerController::class, 'create'])->name('career.create');
     Route::get('/edit/{id}', [CareerController::class, 'edit'])->name('career.edit');
@@ -56,7 +49,7 @@ Route::middleware('career')->group(function () {
 });
 
 
-Route::middleware('course')->group(function () {
+Route::middleware(['auth'])->prefix('course')->group(function () {
     Route::get('/index', [CourseController::class, 'index'])->name('course.index');
     Route::get('/create', [CourseController::class, 'create'])->name('course.create');
     Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
@@ -69,7 +62,7 @@ Route::middleware('course')->group(function () {
 
 
 
-Route::middleware('environment_type')->group(function () {
+Route::middleware(['auth'])->prefix('environment_type')->group(function () {
     Route::get('/index', [EnvironmentTypeController::class, 'index'])->name('environment_type.index');
     Route::get('/create', [EnvironmentTypeController::class, 'create'])->name('environment_type.create');
     Route::get('/edit/{id}', [EnvironmentTypeController::class, 'edit'])->name('environment_type.edit');
@@ -80,7 +73,7 @@ Route::middleware('environment_type')->group(function () {
 });
 
 
-Route::middleware('instructor')->group(function () {
+Route::middleware(['auth'])->prefix('instructor')->group(function () {
     Route::get('/index', [InstructorController::class, 'index'])->name('instructor.index');
     Route::get('/create', [InstructorController::class, 'create'])->name('instructor.create');
     Route::get('/edit/{document}', [InstructorController::class, 'edit'])->name('instructor.edit');
@@ -90,7 +83,7 @@ Route::middleware('instructor')->group(function () {
 
 });
 
-Route::middleware('learning_environment')->group(function () {
+Route::middleware(['auth'])->prefix('learning_environment')->group(function () {
     Route::get('/index', [LearningEnviromentController::class, 'index'])->name('learning_environment.index');
     Route::get('/create', [LearningEnviromentController::class, 'create'])->name('learning_environment.create');
     Route::get('/edit/{id}', [LearningEnviromentController::class, 'edit'])->name('learning_environment.edit');
@@ -101,7 +94,7 @@ Route::middleware('learning_environment')->group(function () {
 });
 
 
-Route::middleware('location')->group(function () {
+Route::middleware(['auth'])->prefix('location')->group(function () {
     Route::get('/index', [LocationController::class, 'index'])->name('location.index');
     Route::get('/create', [LocationController::class, 'create'])->name('location.create');
     Route::get('/edit/{id}', [LocationController::class, 'edit'])->name('location.edit');
@@ -112,21 +105,27 @@ Route::middleware('location')->group(function () {
 });
 
 
-Route::middleware('scheduling_environment')->group(function () {
+Route::middleware(['auth'])->prefix('scheduling_environment')->group(function () {
     Route::get('/index', [SchedulingEnvironmentController::class, 'index'])->name('scheduling_environment.index');
     Route::get('/create', [SchedulingEnvironmentController::class, 'create'])->name('scheduling_environment.create');
     Route::get('/edit/{id}', [SchedulingEnvironmentController::class, 'edit'])->name('scheduling_environment.edit');
     Route::post('create', [SchedulingEnvironmentController::class, 'store'])->name('scheduling_environment.store');
     Route::put('/edit/{id}', [SchedulingEnvironmentController::class, 'update'])->name('scheduling_environment.update');
     Route::get('/destroy/{id}', [SchedulingEnvironmentController::class, 'destroy'])->name('scheduling_environment.destroy');
+    Route::get('/reports', [SchedulingEnvironmentController::class, 'reports'])->name('scheduling_environment.reports');
 
 });
 
 
-Route::middleware('reports')->group(function () {
+
+Route::middleware(['auth'])->prefix('reports')->group(function () {
     Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
     Route::post('/export_learning_environments', [ReportController::class, 'export_learning_environments'])
         ->name('reports.learning_environments');
+    Route::post('/export_scheduling_enviroments_by_course', [ReportController::class, 'export_scheduling_enviroments_by_course'])->name('reports.scheduling_environments_course');
+
+    Route::post('/export_scheduling_enviroments_by_instructor', [ReportController::class, 'export_scheduling_enviroments_by_instructor'])->name('reports.scheduling_environments_instructor');
+
     Route::get('/courses/pdf', [ReportController::class, 'generatePdf'])->name('courses.pdf');
 
 

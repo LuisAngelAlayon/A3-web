@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Instructor;
 use App\Models\Scheduling_environment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -31,6 +33,12 @@ class SchedulingEnvironmentController extends Controller
         return view('scheduling_environment.index', compact('scheduling_environments'));
     }
 
+    public function reports()
+    {
+        $courses = Course::all();
+        $instructors = Instructor::all();
+        return view('scheduling_environment.reports', compact('courses', 'instructors'));
+    }
     /**
      * Show the form for creating a new resource.
      */

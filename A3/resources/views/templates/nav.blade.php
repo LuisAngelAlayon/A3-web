@@ -141,13 +141,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7"
                        aria-expanded="true" aria-controls="collapse7">
                         <i class="fas fa-fw fa-wrench"></i>
-                        <span>Entornos</span>
+                        <span>Ambientes de programación</span>
                 </a>
                     <div id="collapse7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('scheduling_environment.index') }}">Consultar entornos</a>
-                            <a class="collapse-item" href="{{ route('scheduling_environment.create') }}">Crear entorno</a>
-                    </div>
+                            <a class="collapse-item" href="{{ route('scheduling_environment.index') }}">Consultar ambientes</a>
+                            <a class="collapse-item" href="{{ route('scheduling_environment.create') }}">Crear ambiente</a>
+                            <a class="collapse-item" href="{{ route('scheduling_environment.reports') }}">Reportes</a>                    </div>
                 </div>
             </li>
 
